@@ -1,0 +1,55 @@
+package com.app.mobile_ecommerece.ui
+
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import com.app.mobile_ecommerece.base.BaseFragment
+import com.app.mobile_ecommerece.databinding.FragmentLoginBinding
+import com.app.mobile_ecommerece.model.LoginRequest
+import com.app.mobile_ecommerece.viewmodels.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+class LoginFragment : BaseFragment<FragmentLoginBinding>(true) {
+
+    private val userViewModel: UserViewModel by viewModels()
+
+    override fun inflateBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentLoginBinding {
+        return FragmentLoginBinding.inflate(inflater, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.lifecycleOwner = viewLifecycleOwner
+        registerAllExceptionEvent(userViewModel, viewLifecycleOwner)
+        registerObserverLoadingEvent(userViewModel, viewLifecycleOwner)
+        registerObserverNavigateEvent(userViewModel, viewLifecycleOwner)
+
+        binding.btnLogin.setOnClickListener {
+            //Nếu email hoặc password rỗng thì thông báo
+            if (binding.etUsername.text.toString().isEmpty() || binding.etPassword.text.toString()
+                    .isEmpty()
+            ) {
+                showErrorMessage("Invalid Email or Password!!")
+            } else {
+                Login()
+            }
+        }
+    }
+
+    private fun Login() {
+
+        val loginRequest =
+            LoginRequest(binding.etUsername.text.toString(), binding.etPassword.text.toString())
+
+        userViewModel.login(loginRequest)
+    }
+}
