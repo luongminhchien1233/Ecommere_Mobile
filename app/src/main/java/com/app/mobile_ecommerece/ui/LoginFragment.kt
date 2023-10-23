@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseFragment
 import com.app.mobile_ecommerece.databinding.FragmentLoginBinding
 import com.app.mobile_ecommerece.model.LoginRequest
@@ -33,23 +34,27 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(true) {
         registerObserverLoadingEvent(userViewModel, viewLifecycleOwner)
         registerObserverNavigateEvent(userViewModel, viewLifecycleOwner)
 
+        binding.tvCreateAccount.setOnClickListener {
+            navigateToPage(R.id.action_loginFragment_to_signupFragment)
+        }
+
         binding.btnLogin.setOnClickListener {
             //Nếu email hoặc password rỗng thì thông báo
-            if (binding.etUsername.text.toString().isEmpty() || binding.etPassword.text.toString()
-                    .isEmpty()
-            ) {
-                showErrorMessage("Invalid Email or Password!!")
-            } else {
-                Login()
-            }
+//            if (binding.etUsername.text.toString().isEmpty() || binding.etPassword.text.toString()
+//                    .isEmpty()
+//            ) {
+//                showErrorMessage("Invalid Email or Password!!")
+//            } else {
+//                Login()
+//            }
         }
     }
 
     private fun Login() {
 
-        val loginRequest =
-            LoginRequest(binding.etUsername.text.toString(), binding.etPassword.text.toString())
+//        val loginRequest =
+//            LoginRequest(binding.etUsername.text.toString(), binding.etPassword.text.toString())
 
-        userViewModel.login(loginRequest)
+        //userViewModel.login(loginRequest)
     }
 }
