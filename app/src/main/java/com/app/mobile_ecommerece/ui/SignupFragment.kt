@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseFragment
 import com.app.mobile_ecommerece.databinding.FragmentSignupBinding
+import com.app.mobile_ecommerece.model.SignupRequest
 import com.app.mobile_ecommerece.viewmodels.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.muddz.styleabletoast.StyleableToast
@@ -37,11 +38,12 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>(true) {
         }
 
         binding.btnSignUp.setOnClickListener {
-            if(binding.tvEmail.text.toString().isEmpty() || binding.tvPassword.text.toString().isEmpty() || binding.tvUserName.text.toString().isEmpty()){
+            if(binding.etEmail.text.toString().isEmpty() || binding.etPasswordSignUp.text.toString().isEmpty() || binding.etUserName.text.toString().isEmpty()
+                || binding.etPhoneNumber.text.toString().isEmpty() || binding.etFirstName.text.toString().isEmpty() || binding.etLastName.text.toString().isEmpty()){
                 showErrorMessage("Missing Infomation !!")
             }
 
-            if (binding.tvPassword.text.toString() != binding.tvConfirmPw.text.toString()) {
+            if (binding.etConfirmPwSignUp.text.toString() != binding.etPasswordSignUp.text.toString()) {
                 StyleableToast.makeText(requireContext(), "Password not match", R.style.Theme_EcommerceApp).show()
             } else {
                 SignUp();
@@ -50,6 +52,9 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>(true) {
     }
 
     private  fun SignUp(){
+        val signupRequest =
+            SignupRequest(binding.etFirstName.text.toString(), binding.etLastName.text.toString(), binding.etUserName.text.toString(), binding.etPasswordSignUp.text.toString(), binding.etEmail.text.toString(), binding.etPhoneNumber.text.toString());
 
+        userViewModel.signup(signupRequest)
     }
 }

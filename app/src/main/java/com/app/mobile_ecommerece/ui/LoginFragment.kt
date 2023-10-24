@@ -40,21 +40,20 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(true) {
 
         binding.btnLogin.setOnClickListener {
             //Nếu email hoặc password rỗng thì thông báo
-//            if (binding.etUsername.text.toString().isEmpty() || binding.etPassword.text.toString()
-//                    .isEmpty()
-//            ) {
-//                showErrorMessage("Invalid Email or Password!!")
-//            } else {
-//                Login()
-//            }
+            if (binding.etEmailSignIn.text.toString().isEmpty() || binding.etPasswordSignIn.text.toString()
+                    .isEmpty()
+            ) {
+                showErrorMessage("Invalid Email or Password!!")
+            } else {
+                Login()
+            }
         }
     }
 
     private fun Login() {
+        val loginRequest =
+            LoginRequest(binding.etEmailSignIn.text.toString(), binding.etPasswordSignIn.text.toString())
 
-//        val loginRequest =
-//            LoginRequest(binding.etUsername.text.toString(), binding.etPassword.text.toString())
-
-        //userViewModel.login(loginRequest)
+        userViewModel.login(loginRequest)
     }
 }

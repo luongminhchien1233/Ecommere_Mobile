@@ -8,7 +8,7 @@ object ConstantsURL {
 //    const val CHANGE_PASSWORD = "users/password"
 //    const val USER_ADDRESS_UPDATE = "users/addresses/{addressId}"
 //    const val USER_PROFILE = "users/profile"
-    const val REGISTER_URL = "users/register"
+    const val REGISTER_URL = "user/register"
 //    const val CHECK_EMAIL = "users/email"
 //    const val CATEGORY_URL = "categories"
 //    const val CATEGORY_URL_ID = "categories/{id}"

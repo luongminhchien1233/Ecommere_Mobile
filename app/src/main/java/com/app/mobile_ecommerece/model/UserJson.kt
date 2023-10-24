@@ -5,22 +5,11 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class UserJson(
-    val id: String,
+    val _id: String,
     val firstname: String,
     val lastname: String,
     val email: String,
-    val token: String,
+    val username: String,
 ) : Parcelable {
-    val name
-        get(): String {
-            return "$firstname $lastname"
-        }
 
-    fun isValidateFirstName(): Boolean {
-        return firstname.isNotEmpty()
-    }
-
-    fun isValidateLastName(): Boolean {
-        return lastname.isNotEmpty()
-    }
 }
