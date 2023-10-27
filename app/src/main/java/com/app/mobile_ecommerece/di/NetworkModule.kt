@@ -42,15 +42,15 @@ class NetworkModule {
             .build()
     }
 
-//    @Provides
-//    fun provideCategoryAPI(retrofit: Retrofit): CategoryApi {
-//        return retrofit.create(CategoryApi::class.java)
-//    }
-//
-//    @Provides
-//    fun provideProductAPI(retrofit: Retrofit): ProductApi {
-//        return retrofit.create(ProductApi::class.java)
-//    }
+    @Provides
+    fun provideCategoryAPI(retrofit: Retrofit): CategoryApi {
+        return retrofit.create(CategoryApi::class.java)
+    }
+
+    @Provides
+    fun provideProductAPI(retrofit: Retrofit): ProductApi {
+        return retrofit.create(ProductApi::class.java)
+    }
 
     @Provides
     fun provideUserAPI(retrofit: Retrofit): UserApi {

@@ -1,4 +1,4 @@
-package com.app.e_commerce_app.base
+package com.app.mobile_ecommerece.base
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

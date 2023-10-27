@@ -11,7 +11,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
-import com.app.e_commerce_app.base.BaseViewModel
+import com.app.mobile_ecommerece.base.BaseViewModel
 import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.dialogs.ConfirmDialog
 import com.app.mobile_ecommerece.base.network.BaseNetworkException
@@ -114,7 +114,7 @@ abstract class BaseFragment<VB : ViewBinding>(val isHideBottomNavigationView: Bo
         viewLifecycleOwner: LifecycleOwner
     ) {
         viewModel.baseNetworkException.observe(viewLifecycleOwner, EventObserver {
-            //showErrorMessage(it)
+            showErrorMessage(it)
         })
     }
 

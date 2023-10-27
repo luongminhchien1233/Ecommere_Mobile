@@ -1,4 +1,4 @@
-package com.app.e_commerce_app.common
+package com.app.mobile_ecommerece.common
 
 import android.view.View
 import android.widget.EditText
