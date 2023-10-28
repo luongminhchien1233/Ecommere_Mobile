@@ -35,29 +35,14 @@
                     android:layout_height="70dp"
                     android:layout_marginTop="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:id="@+id/tvWelcome"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginLeft="24dp"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="Welcome,\nOur Ecommerce App"
-                        android:textColor="@color/black"
-                        android:textSize="25sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <HorizontalScrollView
                     android:id="@+id/horizontalScrollView"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
                     android:layout_marginStart="25dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="25dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -79,8 +64,10 @@
                                 android:id="@+id/imageBanner2"
                                 android:layout_width="260dp"
                                 android:layout_height="160dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/banner_phone"
+                                android:src="@drawable/thiet_ke_noi_that_banner"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:shapeAppearanceOverlay="@style/borderImageCart" />
@@ -89,27 +76,14 @@
                                 android:id="@+id/tvSaleOff70"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="12dp"
-                                android:layout_marginTop="28dp"
+                                android:layout_marginTop="68dp"
                                 android:fontFamily="@font/poppins_bold"
-                                android:text="Cell Phones"
+                                android:text="THIẾT KẾ NỘI THẤT"
                                 android:textColor="@color/white"
-                                android:textSize="20sp"
+                                android:textSize="16sp"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/tvSaleOff702"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="12dp"
-                                android:layout_marginTop="8dp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="On everything today"
-                                android:textColor="@color/white"
-                                android:textSize="10sp"
-                                app:layout_constraintStart_toStartOf="@+id/imageBanner2"
-                                app:layout_constraintTop_toBottomOf="@+id/tvSaleOff70" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -125,7 +99,7 @@
                                 android:layout_width="260dp"
                                 android:layout_height="160dp"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/banner_dell"
+                                android:src="@drawable/bo_suu_tap_coastal"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:shapeAppearanceOverlay="@style/borderImageCart" />
@@ -134,27 +108,15 @@
                                 android:id="@+id/tvSaleOff50"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="12dp"
-                                android:layout_marginTop="28dp"
+                                android:layout_marginTop="68dp"
                                 android:fontFamily="@font/poppins_bold"
-                                android:text="Dell Laptop"
-                                android:textColor="@color/black"
-                                android:textSize="20sp"
+                                android:text="BỘ SƯU TẬP MỚI COASTAL"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.566"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/tvSaleSlogan"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="12dp"
-                                android:layout_marginTop="8dp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="THE POWER TO DO MORE"
-                                android:textColor="@color/black"
-                                android:textSize="10sp"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/tvSaleOff50" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -177,7 +139,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="New Arrivals"
+                        android:text="Sản phẩm"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -221,7 +183,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="Category"
+                        android:text="Phòng"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -242,10 +204,10 @@
                         android:id="@+id/rvRoom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginTop="36dp"
+                        app:items="@{homeViewModel.roomsData}"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:items="@{homeViewModel.roomsData}"/>
+                        app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
