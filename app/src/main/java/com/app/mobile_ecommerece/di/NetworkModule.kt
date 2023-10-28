@@ -57,6 +57,11 @@ class NetworkModule {
         return retrofit.create(UserApi::class.java)
     }
 
+    @Provides
+    fun provideRoomAPI(retrofit: Retrofit): RoomApi {
+        return retrofit.create(RoomApi::class.java)
+    }
+
 //    @Provides
 //    fun provideVariationAPI(retrofit: Retrofit) : VariationApi {
 //        return retrofit.create(VariationApi::class.java)

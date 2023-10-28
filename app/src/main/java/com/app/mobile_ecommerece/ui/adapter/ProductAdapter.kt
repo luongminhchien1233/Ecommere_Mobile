@@ -18,10 +18,10 @@ class ProductAdapter(
     private var productList: List<ProductModel> = listOf()
     inner class ProductViewHolder(private val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindData(productModel: ProductModel) {
-            binding.productData = productModel
-            Picasso.get().load(productModel.images[0]).into(binding.shapeableImageView)
-            binding.tvPricePopular.text = productModel.price.toString()
-            binding.Layout.setOnClickListener { onClick(productModel) }
+            binding.product = productModel
+            Picasso.get().load(productModel.images[0]).into(binding.imgItemList)
+            binding.tvPriceItemList.text = productModel.price.toString()
+            binding.LayoutItem.setOnClickListener { onClick(productModel) }
         }
     }
 

@@ -15,8 +15,10 @@ import com.app.mobile_ecommerece.base.BaseFragment
 import com.app.mobile_ecommerece.databinding.FragmentHomeBinding
 import com.app.mobile_ecommerece.model.CategoryModel
 import com.app.mobile_ecommerece.model.ProductModel
+import com.app.mobile_ecommerece.model.RoomModel
 import com.app.mobile_ecommerece.ui.adapter.CategoryAdapter
 import com.app.mobile_ecommerece.ui.adapter.ProductAdapter
+import com.app.mobile_ecommerece.ui.adapter.RoomAdapter
 import com.app.mobile_ecommerece.viewmodels.HomeViewModel
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
@@ -28,8 +30,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(false) {
 
     private val homeViewModel: HomeViewModel by activityViewModels()
 
-    private val categoryAdapter: CategoryAdapter by lazy{
-        CategoryAdapter(requireContext(), onCategoryIconClick)
+    private val roomAdapter: RoomAdapter by lazy{
+        RoomAdapter(requireContext(), onRoomIconClick)
     }
 
     override fun inflateBinding(
@@ -46,12 +48,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(false) {
     }
 
     private fun setupRecycleViewLayout() {
-        binding.rvCategory.adapter =
-            categoryAdapter
-        binding.rvCategory.layoutManager = GridLayoutManager(requireContext(), 4)
+        binding.rvRoom.adapter =
+            roomAdapter
+        binding.rvRoom.layoutManager = GridLayoutManager(requireContext(), 4)
 
         binding.rvNewArrivalsHome.adapter = ProductAdapter(requireContext(), onProductItemClick)
-        binding.rvNewArrivalsHome.layoutManager = GridLayoutManager(context, 1)
+        binding.rvNewArrivalsHome.layoutManager = GridLayoutManager(context, 2)
 //
 //        binding.layoutCategoryList.adapter =
 //            CategoryButtonAdapter(requireContext(), onCategoryItemButtonClick)
@@ -79,26 +81,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(false) {
         val controller = findNavController()
     }
 
-//    private val onCategoryItemButtonClick: (CategoryRadioButton) -> Unit = {
-//        homeViewModel.fetchProductsByCategoryId(it.id)
-//        homeViewModel.isProductsLoading.observe(viewLifecycleOwner, EventObserver { isShow ->
-//            if (isShow)
-//                binding.productsLoadingLayout.visibility = View.VISIBLE
-//            else
-//                binding.productsLoadingLayout.visibility = View.GONE
-//        })
-//    }
-//
-//    private val onCategoryIconButtonClick: OnCategoryIconButtonClick = {
-////        binding.layoutProductList.loadProductByCategoryId(0)
-//    }
-
-
     private val onProductItemClick: (ProductModel) -> Unit = {
-
+        val action: NavDirections = HomeFragmentDirections.actionHomeFragmentToProductDetailsFragment(it)
+        navigateAction(action)
     }
 
-    private val onCategoryIconClick: (CategoryModel) -> Unit = {
+    private val onRoomIconClick: (RoomModel) -> Unit = {
 
     }
 }

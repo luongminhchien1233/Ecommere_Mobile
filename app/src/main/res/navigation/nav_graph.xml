@@ -39,6 +39,24 @@
         android:label="Home"
         tools:layout="@layout/fragment_home" >
 
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.app.mobile_ecommerece.ui.ProductDetailFragment"
+        android:label="Product Detail"
+        tools:layout="@layout/fragment_product_detail" >
+
+
+        <argument
+            android:name="productModel"
+            app:argType="com.app.mobile_ecommerece.model.ProductModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
 </navigation>
