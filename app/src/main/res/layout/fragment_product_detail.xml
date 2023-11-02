@@ -107,37 +107,83 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-<!--                        <TextView-->
-<!--                            android:id="@+id/tvReview"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginStart="104dp"-->
-<!--                            android:fontFamily="@font/poppins_medium"-->
-<!--                            android:text="Review"-->
-<!--                            android:textColor="@color/black"-->
-<!--                            android:textSize="14sp"-->
-<!--                            app:layout_constraintStart_toStartOf="parent"-->
-<!--                            app:layout_constraintTop_toBottomOf="@+id/tvBelowNameItemDetails" />-->
+                        <!--                        <TextView-->
+                        <!--                            android:id="@+id/tvReview"-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_marginStart="104dp"-->
+                        <!--                            android:fontFamily="@font/poppins_medium"-->
+                        <!--                            android:text="Review"-->
+                        <!--                            android:textColor="@color/black"-->
+                        <!--                            android:textSize="14sp"-->
+                        <!--                            app:layout_constraintStart_toStartOf="parent"-->
+                        <!--                            app:layout_constraintTop_toBottomOf="@+id/tvBelowNameItemDetails" />-->
 
-<!--                        <TextView-->
-<!--                            android:id="@+id/tvQuestion"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginStart="8dp"-->
-<!--                            android:fontFamily="@font/poppins_medium"-->
-<!--                            android:text="Question?"-->
-<!--                            android:textColor="@color/black"-->
-<!--                            android:textSize="14sp"-->
-<!--                            app:layout_constraintStart_toEndOf="@+id/tvReview"-->
-<!--                            app:layout_constraintTop_toBottomOf="@+id/tvBelowNameItemDetails" />-->
+                        <!--                        <TextView-->
+                        <!--                            android:id="@+id/tvQuestion"-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_marginStart="8dp"-->
+                        <!--                            android:fontFamily="@font/poppins_medium"-->
+                        <!--                            android:text="Question?"-->
+                        <!--                            android:textColor="@color/black"-->
+                        <!--                            android:textSize="14sp"-->
+                        <!--                            app:layout_constraintStart_toEndOf="@+id/tvReview"-->
+                        <!--                            app:layout_constraintTop_toBottomOf="@+id/tvBelowNameItemDetails" />-->
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/LayoutBtnQuantity"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvNameItemDetails">
+
+                            <TextView
+                                android:id="@+id/btnMinusQuantity"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:background="@drawable/custom_btn_quantity_minus"
+                                android:gravity="center"
+                                android:text="-"
+                                android:textColor="@color/black"
+                                android:textSize="12sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvQuantity"
+                                android:layout_width="20dp"
+                                android:layout_height="30dp"
+                                android:background="@drawable/custom_text_quantity"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/black"
+                                app:layout_constraintEnd_toStartOf="@+id/btnPlusQuantity"
+                                app:layout_constraintStart_toEndOf="@+id/btnMinusQuantity"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/btnPlusQuantity"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:background="@drawable/custom_btn_quantity_plus"
+                                android:gravity="center"
+                                android:text="+"
+                                android:textColor="@color/black"
+                                android:textSize="12sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <TextView
                             android:id="@+id/tvNameItemDetails"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_bold"
-                            android:text="@{productData.name}"
                             android:minLines="1"
+                            android:text="@{productData.name}"
                             android:textAlignment="textStart"
                             android:textColor="@color/black"
                             android:textSize="20sp"
