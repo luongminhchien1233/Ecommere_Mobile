@@ -95,35 +95,35 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/LayoutInfoAddress"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="330dp"
                     android:layout_marginTop="40dp"
                     app:layout_constraintTop_toBottomOf="@+id/LayoutLogo"
-                    tools:layout_editor_absoluteX="0dp">
+                    tools:layout_editor_absoluteX="-16dp">
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/tvManager"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="8dp"-->
-<!--                        android:clickable="true"-->
-<!--                        android:fontFamily="@font/poppins_extralight"-->
-<!--                        android:text="Login with manager role"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/tvCreateAccount" />-->
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/tvManager"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginTop="8dp"-->
+                    <!--                        android:clickable="true"-->
+                    <!--                        android:fontFamily="@font/poppins_extralight"-->
+                    <!--                        android:text="Login with manager role"-->
+                    <!--                        android:textColor="@color/black"-->
+                    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+                    <!--                        app:layout_constraintTop_toBottomOf="@+id/tvCreateAccount" />-->
 
                     <TextView
                         android:id="@+id/tvCreateAccount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginTop="12dp"
                         android:clickable="true"
                         android:fontFamily="@font/poppins_extralight"
                         android:text="Don't have an account yet? Sign Up"
                         android:textColor="@color/black"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/LayoutEmail" />
+                        app:layout_constraintTop_toBottomOf="@+id/cbRemember" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/LayoutEmail"
@@ -235,6 +235,17 @@
                             app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <CheckBox
+                        android:id="@+id/cbRemember"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="12dp"
+                        android:text="Remember"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/LayoutEmail" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
