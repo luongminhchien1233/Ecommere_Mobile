@@ -1,5 +1,7 @@
 package com.app.mobile_ecommerece.di
+import com.app.mobile_ecommerece.common.AuthInterceptor
 import com.app.mobile_ecommerece.data.api.*
+import com.app.mobile_ecommerece.data.repository.TokenRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,9 +28,11 @@ class NetworkModule {
     @Singleton
     fun provideHttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
+        tokenRepository: TokenRepository
     ): OkHttpClient {
         val builder = OkHttpClient.Builder()
         builder.interceptors().add(httpLoggingInterceptor)
+        builder.interceptors().add(AuthInterceptor(tokenRepository))
         return builder.build()
     }
 

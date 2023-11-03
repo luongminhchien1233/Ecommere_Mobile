@@ -7,10 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseViewModel
 import com.app.mobile_ecommerece.common.Event
-import com.app.mobile_ecommerece.data.repository.CategoryRepository
-import com.app.mobile_ecommerece.data.repository.ProductRespository
-import com.app.mobile_ecommerece.data.repository.RoomRespository
-import com.app.mobile_ecommerece.data.repository.UserRepository
+import com.app.mobile_ecommerece.data.repository.*
 import com.app.mobile_ecommerece.model.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
@@ -22,7 +19,8 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val roomRespository: RoomRespository,
-    private val productRespository: ProductRespository
+    private val productRespository: ProductRespository,
+    private val tokenRepository: TokenRepository
 ) : BaseViewModel() {
 
     private var _productsData = MutableLiveData<List<ProductModel>>()
@@ -56,5 +54,12 @@ class HomeViewModel @Inject constructor(
             isFetchDataSuccess.postValue(Event(true))
         }
         registerJobFinish()
+    }
+    fun checkIsLogin(): Boolean {
+        return tokenRepository.checkIsLogin()
+    }
+
+    fun logout() {
+        tokenRepository.removeToken()
     }
 }

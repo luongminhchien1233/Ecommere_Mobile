@@ -8,9 +8,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseActivity
+import com.app.mobile_ecommerece.data.repository.TokenRepository
 import com.app.mobile_ecommerece.databinding.ActivityMainBinding
 import com.app.mobile_ecommerece.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
@@ -18,7 +20,8 @@ class MainActivity : BaseActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
     private lateinit var controller: NavController
-
+    @Inject
+    lateinit var tokenRepository: TokenRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -61,5 +64,7 @@ class MainActivity : BaseActivity() {
 
     override fun onStop() {
         super.onStop()
+        val remember = tokenRepository.getRemember()
+        if (!remember) tokenRepository.removeToken()
     }
 }

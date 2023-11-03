@@ -11,6 +11,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseFragment
 import com.app.mobile_ecommerece.databinding.FragmentHomeBinding
 import com.app.mobile_ecommerece.model.CategoryModel
@@ -77,6 +78,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(false) {
 //        if (homeViewModel.userLiveData.value == null) {
 //            homeViewModel.fetchData()
 //        }
+
+        binding.btnLogOut.setOnClickListener {
+            homeViewModel.logout()
+            navigateToPage(R.id.action_homeFragment_to_loginFragment);
+        }
 
         val controller = findNavController()
     }

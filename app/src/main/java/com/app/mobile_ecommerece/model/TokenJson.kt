@@ -23,4 +23,8 @@ data class TokenJson(
     fun isValidateLastName(): Boolean {
         return lastname.isNotEmpty()
     }
+
+    fun toTokenModel(): TokenModel {
+        return TokenModel(token)
+    }
 }

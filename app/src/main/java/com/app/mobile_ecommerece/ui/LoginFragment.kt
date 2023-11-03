@@ -53,7 +53,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(true) {
     private fun Login() {
         val loginRequest =
             LoginRequest(binding.etEmailSignIn.text.toString(), binding.etPasswordSignIn.text.toString())
-
-        userViewModel.login(loginRequest)
+        val isChecked = binding.cbRemember.isChecked
+        userViewModel.login(loginRequest, isChecked)
     }
 }
