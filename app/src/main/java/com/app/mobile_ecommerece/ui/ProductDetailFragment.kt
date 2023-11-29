@@ -1,8 +1,6 @@
 package com.app.mobile_ecommerece.ui
 
-import android.media.Image
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,14 +10,15 @@ import androidx.navigation.fragment.navArgs
 import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseFragment
 import com.app.mobile_ecommerece.databinding.FragmentProductDetailBinding
+import com.app.mobile_ecommerece.model.CartRequest
 import com.app.mobile_ecommerece.ui.adapter.ImageAdapter
-import com.app.mobile_ecommerece.viewmodels.HomeViewModel
+import com.app.mobile_ecommerece.viewmodels.ProductViewModel
 
 
 class ProductDetailFragment: BaseFragment<FragmentProductDetailBinding>(true) {
 
     private val args by navArgs<ProductDetailFragmentArgs>()
-    private val homeViewModel: HomeViewModel by activityViewModels()
+    private val prodcutViewModel: ProductViewModel by activityViewModels()
     override fun inflateBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -28,9 +27,9 @@ class ProductDetailFragment: BaseFragment<FragmentProductDetailBinding>(true) {
     }
 
     private fun observerEvent() {
-        registerAllExceptionEvent(homeViewModel, viewLifecycleOwner)
-        registerObserverLoadingEvent(homeViewModel, viewLifecycleOwner)
-        registerObserverNavigateEvent(homeViewModel, viewLifecycleOwner)
+        registerAllExceptionEvent(prodcutViewModel, viewLifecycleOwner)
+        registerObserverLoadingEvent(prodcutViewModel, viewLifecycleOwner)
+        registerObserverNavigateEvent(prodcutViewModel, viewLifecycleOwner)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,12 +46,32 @@ class ProductDetailFragment: BaseFragment<FragmentProductDetailBinding>(true) {
             navigateBack()
         }
 
+        var itemQty: Int = binding.tvQuantity.text.toString().toInt();
+
+        binding.btnPlusQuantity.setOnClickListener{
+            itemQty = itemQty + 1
+            binding.tvQuantity.text = itemQty.toString()
+            binding.tvPrice.text = (binding.productData!!.price * itemQty).toString()
+        }
+
+        binding.btnMinusQuantity.setOnClickListener{
+            if(itemQty > 1){
+                itemQty = itemQty - 1
+            }
+            binding.tvQuantity.text = itemQty.toString()
+            binding.tvPrice.text = (binding.productData!!.price * itemQty).toString()
+        }
+
         binding.btnAddtoCart.setOnClickListener {
-            if (!homeViewModel.checkIsLogin())
+            if (!prodcutViewModel.checkIsLogin())
                 navigateToPage(R.id.action_productDetailFragment_to_loginFragment);
             else {
-                Log.d("alo", "add to cart");
+                val cartRequest = CartRequest(binding.productData!!._id, binding.tvQuantity.text.toString().toInt())
+                prodcutViewModel.addtoCart(cartRequest)
             }
+        }
+        binding.btnCart.setOnClickListener {
+            navigateToPage(R.id.action_productDetailFragment_to_cartFragment)
         }
     }
 

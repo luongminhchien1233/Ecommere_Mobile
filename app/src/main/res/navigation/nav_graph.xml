@@ -74,6 +74,20 @@
             app:enterAnim="@android:anim/fade_in"
             app:popEnterAnim="@android:anim/fade_in" />
 
+        <action
+            android:id="@+id/action_productDetailFragment_to_cartFragment"
+            app:destination="@id/cartFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.app.mobile_ecommerece.ui.CartFragment"
+        android:label="Cart"
+        tools:layout="@layout/fragment_cart" >
+
     </fragment>
 
 </navigation>

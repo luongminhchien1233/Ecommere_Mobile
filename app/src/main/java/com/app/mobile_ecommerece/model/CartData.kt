@@ -1,16 +1,13 @@
 package com.app.mobile_ecommerece.model
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class CategoryModel(
+data class CartData(
     val _id: String,
-
-    var nameCate: String,
-
-    //val icUrl: String,
+    val products: List<CartModel>,
+    val cartTotal: Int,
 ) : Parcelable {
 
 }

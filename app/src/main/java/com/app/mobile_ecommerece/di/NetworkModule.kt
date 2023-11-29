@@ -10,6 +10,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -64,6 +65,11 @@ class NetworkModule {
     @Provides
     fun provideRoomAPI(retrofit: Retrofit): RoomApi {
         return retrofit.create(RoomApi::class.java)
+    }
+
+    @Provides
+    fun provideCartAPI(retrofit: Retrofit): CartApi{
+        return retrofit.create(CartApi::class.java)
     }
 
 //    @Provides

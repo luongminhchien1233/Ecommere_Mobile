@@ -26,7 +26,9 @@ fun setImageList(view: ImageSlider, list: ArrayList<SlideModel>?) {
 
 @BindingAdapter("items")
 fun <T> setItems(recyclerView: RecyclerView, items: List<T>?) {
-    if (items == null) return
+    if (items == null){
+        return
+    }
     val adapter = recyclerView.adapter as? BindableAdapter<T>
     adapter?.setItems(items)
 }
@@ -47,16 +49,16 @@ interface BindableAdapter<T> {
 //}
 //
 //
-//@BindingAdapter("numberValue")
-//fun setNumberValue(textView: TextView, value: Int?) {
-//    var number = value
-//    if (number == null)
-//        number = 0
-//    number.let {
-////        val formattedValue = Utils.formatNumber(number)
-//        textView.text = number.toString()
-//    }
-//}
+@BindingAdapter("numberValue")
+fun setNumberValue(textView: TextView, value: Int?) {
+    var number = value
+    if (number == null)
+        number = 0
+    number.let {
+//        val formattedValue = Utils.formatNumber(number)
+        textView.text = number.toString()
+    }
+}
 //
 //
 //@BindingAdapter("editTextValue")

@@ -1,7 +1,6 @@
 package com.app.mobile_ecommerece.data.repository
 
 import android.accounts.NetworkErrorException
-import android.util.Log
 import com.app.mobile_ecommerece.data.api.NetWorkResult
 import com.app.mobile_ecommerece.data.services.CategoryRemoteService
 import kotlinx.coroutines.Dispatchers

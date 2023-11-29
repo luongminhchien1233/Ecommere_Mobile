@@ -2,11 +2,18 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="infoCart"-->
-<!--            type="com.example.ecommerce_mobile_app.model.InfoCart" />-->
-<!--    </data>-->
+    <data>
+
+        <variable
+            name="cartViewModel"
+            type="com.app.mobile_ecommerece.viewmodels.CartViewModel" />
+
+        <variable
+            name="cartModel"
+            type="com.app.mobile_ecommerece.model.CartModel" />
+
+        <import type="android.view.View" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -62,7 +69,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:items="@{cartViewModel.cartData.products}"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -85,7 +93,7 @@
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_medium"
                         android:gravity="center"
-                        setTotalItem=""
+                        app:numberValue="@{cartViewModel.cartData.cartTotal}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +104,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_bold"
-                        setTotalPrice=""
                         android:gravity="center"
                         android:textColor="@color/black"
                         android:textSize="20sp"
@@ -113,7 +120,6 @@
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
                         android:text="Proceed to Checkout"
-                        android:textAlignment="viewStart"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="16sp"

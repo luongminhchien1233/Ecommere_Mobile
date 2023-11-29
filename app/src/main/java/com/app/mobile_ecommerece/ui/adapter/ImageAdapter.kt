@@ -8,13 +8,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.app.mobile_ecommerece.R
+import com.app.mobile_ecommerece.model.ImageModel
 import com.app.mobile_ecommerece.ui.adapter.ImageAdapter.Page2ViewHolder
 import com.denzcoskun.imageslider.adapters.ViewPagerAdapter
 import com.squareup.picasso.Picasso
 
 
 class ImageAdapter(
-    private val imageList: List<String>
+    private val imageList: List<ImageModel>
 ) : RecyclerView.Adapter<ImageAdapter.Page2ViewHolder>(){
     inner class Page2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemImage: ImageView = itemView.findViewById(R.id.imgSlideItem)
@@ -36,7 +37,7 @@ class ImageAdapter(
     }
 
     override fun onBindViewHolder(holder: Page2ViewHolder, position: Int) {
-        Picasso.get().load(imageList[position]).into(holder.itemImage)
+        Picasso.get().load(imageList[position].url).into(holder.itemImage)
     }
 
 

@@ -19,7 +19,7 @@ class CategoryAdapter(
     inner class CategoryViewHolder(private val binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindData(categoryModel: CategoryModel) {
             binding.tvCategoryName.text = categoryModel.nameCate
-            Picasso.get().load(categoryModel.icUrl).into(binding.categoryIc)
+            //Picasso.get().load(categoryModel.icUrl).into(binding.categoryIc)
             binding.layoutCategoryItem.setOnClickListener { onClick(categoryModel) }
         }
     }
@@ -44,4 +44,5 @@ class CategoryAdapter(
         Log.d("SetItem icon adapter ", "")
         notifyDataSetChanged()
     }
+
 }

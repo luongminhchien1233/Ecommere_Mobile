@@ -4,10 +4,11 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class TokenJson(
-    val token: String,
+data class CartModel(
+    val product: ProductCartModel,
+    val quantity: Int,
+    val totalPriceItem: Int,
+    val _id: String
 ) : Parcelable {
-    fun toTokenModel(): TokenModel {
-        return TokenModel(token)
-    }
+
 }

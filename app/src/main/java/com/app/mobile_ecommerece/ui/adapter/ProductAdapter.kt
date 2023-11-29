@@ -19,7 +19,7 @@ class ProductAdapter(
     inner class ProductViewHolder(private val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindData(productModel: ProductModel) {
             binding.product = productModel
-            Picasso.get().load(productModel.images[0]).into(binding.imgItemList)
+            Picasso.get().load(productModel.images[0].url).into(binding.imgItemList)
             binding.tvPriceItemList.text = productModel.price.toString()
             binding.LayoutItem.setOnClickListener { onClick(productModel) }
         }
@@ -45,4 +45,5 @@ class ProductAdapter(
         Log.d("SetItem pd adapter ", "")
         notifyDataSetChanged()
     }
+
 }
