@@ -70,7 +70,7 @@
                         android:layout_height="match_parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:items="@{cartViewModel.cartData.products}"/>
+                        app:items="@{cartViewModel.cartItemData}"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout

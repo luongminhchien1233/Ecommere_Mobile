@@ -1,4 +1,4 @@
-package com.app.mobile_ecommerece.model
+package com.app.mobile_ecommerece.model.Request
 
 
 import android.os.Parcelable

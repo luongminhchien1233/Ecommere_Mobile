@@ -1,16 +1,14 @@
 package com.app.mobile_ecommerece.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseFragment
 import com.app.mobile_ecommerece.databinding.FragmentLoginBinding
-import com.app.mobile_ecommerece.model.LoginRequest
+import com.app.mobile_ecommerece.model.Request.LoginRequest
 import com.app.mobile_ecommerece.viewmodels.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

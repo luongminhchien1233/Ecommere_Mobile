@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseFragment
 import com.app.mobile_ecommerece.databinding.FragmentSignupBinding
-import com.app.mobile_ecommerece.model.SignupRequest
+import com.app.mobile_ecommerece.model.Request.SignupRequest
 import com.app.mobile_ecommerece.viewmodels.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.muddz.styleabletoast.StyleableToast

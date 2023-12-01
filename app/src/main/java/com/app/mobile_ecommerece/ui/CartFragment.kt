@@ -1,7 +1,6 @@
 package com.app.mobile_ecommerece.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.app.mobile_ecommerece.base.BaseFragment
 import com.app.mobile_ecommerece.databinding.FragmentCartBinding
 import com.app.mobile_ecommerece.model.CartModel
-import com.app.mobile_ecommerece.model.CartRequest
+import com.app.mobile_ecommerece.model.Request.CartRequest
 import com.app.mobile_ecommerece.ui.adapter.CartAdapter
 import com.app.mobile_ecommerece.viewmodels.CartViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,6 +49,11 @@ class CartFragment : BaseFragment<FragmentCartBinding>(false) {
         if(cartViewModel.checkIsLogin()){
             cartViewModel.setEmpty()
             cartViewModel.getCart()
+        }
+        binding.tvClearAll.setOnClickListener {
+            cartViewModel.clearCart()
+            cartAdapter.clear()
+            binding.tvTotalCart.text = "0";
         }
         //binding.tvTotalCart.text = binding.cartViewModel.cartData.value!!.cartTotal.toString()
         val controller = findNavController()

@@ -1,6 +1,5 @@
 package com.app.mobile_ecommerece.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -8,9 +7,11 @@ import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseViewModel
 import com.app.mobile_ecommerece.data.repository.TokenRepository
 import com.app.mobile_ecommerece.data.repository.UserRepository
-import com.app.mobile_ecommerece.model.LoginRequest
-import com.app.mobile_ecommerece.model.SignupRequest
+import com.app.mobile_ecommerece.model.Request.LoginRequest
+import com.app.mobile_ecommerece.model.Request.ProfileRequest
+import com.app.mobile_ecommerece.model.Request.SignupRequest
 import com.app.mobile_ecommerece.model.TokenJson
+import com.app.mobile_ecommerece.model.UserJson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,6 +23,8 @@ class UserViewModel @Inject constructor(
 ) : BaseViewModel() {
     private var _userLiveData = MutableLiveData<TokenJson>()
     val userLiveData: LiveData<TokenJson> = _userLiveData
+    private var _userInfoLiveData = MutableLiveData<UserJson>()
+    val userInfoLiveData: LiveData<UserJson> = _userInfoLiveData
 
     fun login(loginRequest: LoginRequest, remember: Boolean) {
         showLoading(true)
@@ -49,6 +52,28 @@ class UserViewModel @Inject constructor(
         parentJob = viewModelScope.launch(handler) {
             val user = userRepository.signup(signupRequest)
             navigateToPage(R.id.action_signupFragment_to_loginFragment)
+        }
+        registerJobFinish()
+    }
+
+    fun checkIsLogin(): Boolean {
+        return tokenRepository.checkIsLogin()
+    }
+
+    fun getProfile() {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val profile = userRepository.getProfile()
+            _userInfoLiveData.postValue(profile)
+        }
+        registerJobFinish()
+    }
+
+    fun updateProfile(profileRequest: ProfileRequest) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val profile = userRepository.updateProfile(profileRequest)
+            _userInfoLiveData.postValue(profile)
         }
         registerJobFinish()
     }

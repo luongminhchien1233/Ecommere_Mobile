@@ -6,6 +6,8 @@ object ConstantsURL {
     const val BASE_URL = "https://api-nhaxinh.onrender.com/api/"
     const val LOGIN_URL = "user/loginUser"
     const val REGISTER_URL = "user/register"
+    const val PROFILE_URL = "user/info-user"
+    const val PROFILE_UPDATE_URL = "user/update-user"
     const val CATEGORY_URL = "category/all"
     const val PRODUCT_URL = "product/getAllProduct"
     const val ROOM_URL = "room/all"

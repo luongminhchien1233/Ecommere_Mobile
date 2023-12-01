@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseFragment
 import com.app.mobile_ecommerece.databinding.FragmentProductDetailBinding
-import com.app.mobile_ecommerece.model.CartRequest
+import com.app.mobile_ecommerece.model.Request.CartRequest
 import com.app.mobile_ecommerece.ui.adapter.ImageAdapter
 import com.app.mobile_ecommerece.viewmodels.ProductViewModel
 

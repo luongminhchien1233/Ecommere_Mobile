@@ -8,7 +8,7 @@ import com.app.mobile_ecommerece.data.repository.CartRespository
 import com.app.mobile_ecommerece.data.repository.TokenRepository
 import com.app.mobile_ecommerece.model.CartData
 import com.app.mobile_ecommerece.model.CartModel
-import com.app.mobile_ecommerece.model.CartRequest
+import com.app.mobile_ecommerece.model.Request.CartRequest
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -32,6 +32,15 @@ class CartViewModel @Inject constructor(
         registerJobFinish()
     }
 
+    fun clearCart() {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val cart = cartRespository.clearCart()
+            setEmpty()
+        }
+        registerJobFinish()
+    }
+
     fun updateCart(cartRequest: CartRequest){
         parentJob = viewModelScope.launch(handler) {
             val cart = cartRespository.updateCart(cartRequest)
@@ -43,6 +52,7 @@ class CartViewModel @Inject constructor(
 
     fun setEmpty() {
         parentJob = viewModelScope.launch(handler) {
+            _cartData.postValue(null)
             _cartItemData.postValue(listOf())
         }
         registerJobFinish()

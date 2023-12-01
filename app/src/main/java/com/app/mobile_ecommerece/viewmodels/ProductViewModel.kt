@@ -5,7 +5,7 @@ import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseViewModel
 import com.app.mobile_ecommerece.data.repository.CartRespository
 import com.app.mobile_ecommerece.data.repository.TokenRepository
-import com.app.mobile_ecommerece.model.CartRequest
+import com.app.mobile_ecommerece.model.Request.CartRequest
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
