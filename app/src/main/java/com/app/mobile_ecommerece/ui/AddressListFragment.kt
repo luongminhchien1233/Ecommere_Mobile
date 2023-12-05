@@ -1,6 +1,7 @@
 package com.app.mobile_ecommerece.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.app.mobile_ecommerece.base.BaseFragment
 import com.app.mobile_ecommerece.databinding.FragmentAddressListBinding
 import com.app.mobile_ecommerece.model.AddressModel
-import com.app.mobile_ecommerece.model.CartModel
-import com.app.mobile_ecommerece.model.Request.CartRequest
 import com.app.mobile_ecommerece.ui.adapter.AddressAdapter
-import com.app.mobile_ecommerece.ui.adapter.CartAdapter
 import com.app.mobile_ecommerece.viewmodels.AddressViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -65,7 +63,8 @@ class AddressListFragment : BaseFragment<FragmentAddressListBinding>(true) {
     }
 
     private val onItemClick: (AddressModel) -> Unit = {
-
+        val action: NavDirections = AddressListFragmentDirections.actionAddressListFragmentToEditAddressFragment(it)
+        navigateAction(action)
     }
 
 }

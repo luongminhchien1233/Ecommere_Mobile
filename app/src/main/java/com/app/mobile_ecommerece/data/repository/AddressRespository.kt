@@ -84,4 +84,34 @@ class AddressRespository @Inject constructor(private val addressRemoteService: A
             }
         }
     }
+
+    suspend fun deleteAddress(id: String) = withContext(Dispatchers.IO) {
+        when (val result = addressRemoteService.deleteAddress(id)) {
+            is NetWorkResult.Success -> {
+                val data = result.data.data
+                if (data == null)
+                    throw NetworkErrorException("Address Empty")
+                else
+                    data
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
+
+    suspend fun updateAddress(id: String, addressRequest: AddressRequest) = withContext(Dispatchers.IO) {
+        when (val result = addressRemoteService.updateAddress(id, addressRequest)) {
+            is NetWorkResult.Success -> {
+                val data = result.data.data
+                if (data == null)
+                    throw NetworkErrorException("Address Empty")
+                else
+                    data
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
 }

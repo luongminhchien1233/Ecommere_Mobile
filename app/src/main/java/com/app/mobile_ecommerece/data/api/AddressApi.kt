@@ -24,4 +24,10 @@ interface AddressApi {
 
     @GET(ConstantsURL.ADDRESS_URL)
     suspend fun getAddress(): Response<CustomResponse<List<AddressModel>>>
+
+    @DELETE(ConstantsURL.ADDRESS_EDIT_URL)
+    suspend fun deleteAddress(@Path("id") id: String): Response<CustomResponse<List<AddressModel>>>
+
+    @PUT(ConstantsURL.ADDRESS_EDIT_URL)
+    suspend fun updateAddress(@Path("id") id: String, @Body addressRequest: AddressRequest): Response<CustomResponse<List<AddressModel>>>
 }

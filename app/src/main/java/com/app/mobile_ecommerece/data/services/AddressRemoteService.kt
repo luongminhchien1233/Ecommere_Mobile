@@ -29,4 +29,10 @@ class AddressRemoteService @Inject constructor(private val addressApi: AddressAp
     suspend fun getAddress(): NetWorkResult<CustomResponse<List<AddressModel>>> =
         handleApi { addressApi.getAddress() }
 
+    suspend fun deleteAddress(id: String): NetWorkResult<CustomResponse<List<AddressModel>>> =
+        handleApi { addressApi.deleteAddress(id) }
+
+    suspend fun updateAddress(id: String, addressRequest: AddressRequest): NetWorkResult<CustomResponse<List<AddressModel>>> =
+        handleApi { addressApi.updateAddress(id, addressRequest) }
+
 }

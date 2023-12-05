@@ -69,11 +69,52 @@ class AddressViewModel @Inject constructor(
         registerJobFinish()
     }
 
+    fun deleteAddress(id: String) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val data = addressRespository.deleteAddress(id)
+            getAllAddress()
+            navigateToPage(R.id.action_editAddressFragment_to_addressListFragment)
+        }
+        registerJobFinish()
+    }
+
+    fun updateAddress(id: String, addressRequest: AddressRequest) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val data = addressRespository.updateAddress(id, addressRequest)
+            getAllAddress()
+            navigateToPage(R.id.action_editAddressFragment_to_addressListFragment)
+        }
+        registerJobFinish()
+    }
+
     fun getAllAddress() {
         showLoading(true)
         parentJob = viewModelScope.launch(handler) {
             val data = addressRespository.getAddress()
             _addressesData.postValue(data)
+        }
+        registerJobFinish()
+    }
+
+    fun getAllInfo(addressModel: AddressModel) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val province = addressRespository.getProvince()
+            _provincesData.postValue(province)
+            for(item in province){
+                if(item.name == addressModel.province){
+                    val district = addressRespository.getDisctrict(item.code)
+                    _districtsData.postValue(district.districts)
+                    for(ward in district.districts){
+                        if(ward.name == addressModel.district){
+                            val data = addressRespository.getTown(ward.code)
+                            _townsData.postValue(data.wards)
+                        }
+                    }
+                }
+            }
         }
         registerJobFinish()
     }

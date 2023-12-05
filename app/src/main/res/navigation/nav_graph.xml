@@ -136,6 +136,10 @@
             app:enterAnim="@android:anim/fade_in"
             app:popEnterAnim="@android:anim/fade_in" />
 
+        <action
+            android:id="@+id/action_addressListFragment_to_editAddressFragment"
+            app:destination="@id/editAddressFragment" />
+
     </fragment>
 
     <fragment
@@ -149,6 +153,26 @@
             app:destination="@id/addressListFragment"
             app:enterAnim="@android:anim/fade_in"
             app:popEnterAnim="@android:anim/fade_in" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/editAddressFragment"
+        android:name="com.app.mobile_ecommerece.ui.EditAddressFragment"
+        android:label="Address Edit"
+        tools:layout="@layout/fragment_edit_address" >
+
+
+        <action
+            android:id="@+id/action_editAddressFragment_to_addressListFragment"
+            app:destination="@id/addressListFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+        <argument
+            android:name="addressModel"
+            app:argType="com.app.mobile_ecommerece.model.AddressModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
 
     </fragment>
 

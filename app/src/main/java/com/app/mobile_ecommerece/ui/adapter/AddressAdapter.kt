@@ -20,7 +20,7 @@ class AddressAdapter(
     private var addressList: List<AddressModel> = listOf()
     inner class AddressViewHolder(private val binding: ItemAddressBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindData(addressModel: AddressModel) {
-            binding.btnViewDetailOrder.setOnClickListener { onClick }
+            binding.Layout.setOnClickListener { onClick(addressModel) }
             binding.tvNameAddress.text = addressModel.nameAddress
             binding.tvNote.text = addressModel.note
             binding.tvDefault.isVisible = addressModel.default
