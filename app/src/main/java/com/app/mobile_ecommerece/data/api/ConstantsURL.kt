@@ -15,4 +15,9 @@ object ConstantsURL {
     const val CART_ADD_URL = "cart/addtoCart"
     const val CART_UPDATE_URL = "cart/updateCart"
     const val CART_EMPTY_URL = "cart/emptyCart"
+    const val ADDRESS_URL = "address"
+    const val ADDRESS_EDIT_URL = "address/{id}"
+    const val PROVINCE_URL = "https://provinces.open-api.vn/api/p/"
+    const val DISCTRICT_URL = "https://provinces.open-api.vn/api/p/{id}/?depth=2"
+    const val TOWN_URL = "https://provinces.open-api.vn/api/d/{id}/?depth=2"
 }

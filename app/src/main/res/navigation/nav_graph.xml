@@ -102,6 +102,12 @@
             app:enterAnim="@android:anim/fade_in"
             app:popEnterAnim="@android:anim/fade_in" />
 
+        <action
+            android:id="@+id/action_profileFragment_to_addressListFragment"
+            app:destination="@id/addressListFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
     </fragment>
 
     <fragment
@@ -109,6 +115,40 @@
         android:name="com.app.mobile_ecommerece.ui.PersonalDetailFragment"
         android:label="Personal Detail"
         tools:layout="@layout/fragment_personal_details" >
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/addressListFragment"
+        android:name="com.app.mobile_ecommerece.ui.AddressListFragment"
+        android:label="Address List"
+        tools:layout="@layout/fragment_address_list" >
+
+        <action
+            android:id="@+id/action_addressListFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
+        <action
+            android:id="@+id/action_addressListFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/addAddressFragment"
+        android:name="com.app.mobile_ecommerece.ui.AddAddressFragment"
+        android:label="Address Add"
+        tools:layout="@layout/fragment_add_address" >
+
+        <action
+            android:id="@+id/action_addAddressFragment_to_addressListFragment"
+            app:destination="@id/addressListFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
 
     </fragment>
 

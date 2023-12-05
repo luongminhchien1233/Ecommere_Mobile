@@ -72,6 +72,11 @@ class NetworkModule {
         return retrofit.create(CartApi::class.java)
     }
 
+    @Provides
+    fun provideAddressAPI(retrofit: Retrofit): AddressApi{
+        return retrofit.create(AddressApi::class.java)
+    }
+
 //    @Provides
 //    fun provideVariationAPI(retrofit: Retrofit) : VariationApi {
 //        return retrofit.create(VariationApi::class.java)

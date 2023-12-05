@@ -43,6 +43,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(false) {
                 navigateAction(action)
             }
         }
+        binding.LayoutAddressShip.setOnClickListener {
+            if(userViewModel.checkIsLogin()){
+                val action: NavDirections = ProfileFragmentDirections.actionProfileFragmentToAddressListFragment()
+                navigateAction(action)
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
