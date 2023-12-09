@@ -13,7 +13,37 @@ class ProductRespository @Inject constructor(private val productRemoteService: P
         when (val result = productRemoteService.getAllProducts()) {
             is NetWorkResult.Success -> {
                 val data = result.data.data
-                if (data == null || data.isEmpty())
+                if (data == null)
+                    throw NetworkErrorException("Product Empty")
+                else
+                    data
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
+
+    suspend fun getProductByCategory(id: String) = withContext(Dispatchers.IO) {
+        when (val result = productRemoteService.getProductByCategory(id)) {
+            is NetWorkResult.Success -> {
+                val data = result.data.data
+                if (data == null)
+                    throw NetworkErrorException("Product Empty")
+                else
+                    data
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
+
+    suspend fun getProductByRoom(id: String) = withContext(Dispatchers.IO) {
+        when (val result = productRemoteService.getProductByRoom(id)) {
+            is NetWorkResult.Success -> {
+                val data = result.data.data
+                if (data == null)
                     throw NetworkErrorException("Product Empty")
                 else
                     data

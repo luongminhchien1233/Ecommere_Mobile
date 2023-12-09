@@ -17,7 +17,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/room_ic"
                 android:layout_width="@dimen/category_ic_size"
                 android:layout_height="@dimen/category_ic_size"

@@ -10,7 +10,6 @@ data class CategoryModel(
 
     var nameCate: String,
 
-    //val icUrl: String,
 ) : Parcelable {
 
 }

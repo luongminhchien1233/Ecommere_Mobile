@@ -22,4 +22,19 @@ class RoomRespository @Inject constructor(private val roomRemoteService: RoomRem
             }
         }
     }
+
+    suspend fun getCategoryByRoom(id: String) = withContext(Dispatchers.IO) {
+        when (val result = roomRemoteService.getCategoryByRoom(id)) {
+            is NetWorkResult.Success -> {
+                val data = result.data.data!!.categories
+                if (data == null || data.isEmpty())
+                    throw NetworkErrorException("Room Empty")
+                else
+                    data
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
 }

@@ -4,13 +4,9 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class RoomModel(
-    val _id: String,
-
-    val nameRoom: String,
-
-    val icUrl: String,
-
+data class ProductData(
+    val total: Int,
+    val product: List<ProductModel>,
 ) : Parcelable {
 
 }

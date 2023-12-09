@@ -18,9 +18,8 @@ class CategoryAdapter(
     private var categoryList: List<CategoryModel> = listOf()
     inner class CategoryViewHolder(private val binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindData(categoryModel: CategoryModel) {
-            binding.tvCategoryName.text = categoryModel.nameCate
-            //Picasso.get().load(categoryModel.icUrl).into(binding.categoryIc)
-            binding.layoutCategoryItem.setOnClickListener { onClick(categoryModel) }
+            binding.btnCategoryStore.text = categoryModel.nameCate
+            binding.btnCategoryStore.setOnClickListener { onClick(categoryModel) }
         }
     }
 

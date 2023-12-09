@@ -84,6 +84,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(false) {
             navigateToPage(R.id.action_homeFragment_to_loginFragment);
         }
 
+        binding.tvViewAllNew.setOnClickListener {
+            val action: NavDirections = HomeFragmentDirections.actionHomeFragmentToStoreFragment("")
+            navigateAction(action)
+        }
+
+        binding.tvNewArrivals.setOnClickListener {
+            val action: NavDirections = HomeFragmentDirections.actionHomeFragmentToStoreFragment("")
+            navigateAction(action)
+        }
+
         val controller = findNavController()
     }
 
@@ -93,6 +103,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(false) {
     }
 
     private val onRoomIconClick: (RoomModel) -> Unit = {
-
+        val action: NavDirections = HomeFragmentDirections.actionHomeFragmentToStoreFragment(it._id)
+        navigateAction(action)
     }
 }
