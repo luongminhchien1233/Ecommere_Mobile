@@ -49,6 +49,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(false) {
                 navigateAction(action)
             }
         }
+        binding.LayoutMyOrderProfile.setOnClickListener {
+            if(userViewModel.checkIsLogin()){
+                val action: NavDirections = ProfileFragmentDirections.actionProfileFragmentToOrderListFragment()
+                navigateAction(action)
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

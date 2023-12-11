@@ -63,9 +63,10 @@ class StoreFragment : BaseFragment<FragmentStoreBinding>(false) {
         observerEvent()
         setUpNavigate()
         setupRecycleViewLayout()
-        if(args.roomId.isNullOrEmpty()){
-            storeViewModel.getALlProduct()
-            storeViewModel.getALlCategories()
+        storeViewModel.getALlProduct()
+        storeViewModel.getALlCategories()
+        if(args.roomId == null){
+
         }
         else{
             val roomId : String = args.roomId!!

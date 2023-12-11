@@ -77,22 +77,10 @@ class NetworkModule {
         return retrofit.create(AddressApi::class.java)
     }
 
-//    @Provides
-//    fun provideVariationAPI(retrofit: Retrofit) : VariationApi {
-//        return retrofit.create(VariationApi::class.java)
-//    }
-//
-//    @Provides
-//    fun provideShippingAPI(retrofit: Retrofit) : ShippingApi {
-//        return retrofit.create(ShippingApi::class.java)
-//    }
-//
-//    @Provides
-//    fun provideOrderAPI(retrofit: Retrofit) : OrderApi {
-//        return retrofit.create(OrderApi::class.java)
-//    }
-//    @Provides
-//    fun provideNewAPI(retrofit: Retrofit) : SaleApi {
-//        return retrofit.create(SaleApi::class.java)
-//    }
+    @Provides
+    fun provideOrderAPI(retrofit: Retrofit): OrderApi{
+        return retrofit.create(OrderApi::class.java)
+    }
+
+
 }

@@ -23,4 +23,7 @@ object ConstantsURL {
     const val PROVINCE_URL = "https://provinces.open-api.vn/api/p/"
     const val DISCTRICT_URL = "https://provinces.open-api.vn/api/p/{id}/?depth=2"
     const val TOWN_URL = "https://provinces.open-api.vn/api/d/{id}/?depth=2"
+    const val ORDER_URL = "order"
+    const val ORDER_GET_URL = "order/myOrder"
+    const val ORDER_DETAILS_URL = "order/detail/{id}"
 }

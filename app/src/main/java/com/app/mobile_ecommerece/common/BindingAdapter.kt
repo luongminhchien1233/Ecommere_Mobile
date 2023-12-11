@@ -1,7 +1,5 @@
 package com.app.mobile_ecommerece.common
 
-import android.view.View
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.*
@@ -10,6 +8,8 @@ import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
+import java.util.*
 
 @BindingAdapter("imageUrl")
 fun loadImage(view: ImageView, url: String?) {
@@ -57,6 +57,21 @@ fun setNumberValue(textView: TextView, value: Int?) {
     number.let {
 //        val formattedValue = Utils.formatNumber(number)
         textView.text = number.toString()
+    }
+}
+
+@BindingAdapter("dayValue")
+fun setDayValue(textView: TextView, value: String?) {
+    var dateString = value
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    if (dateString == "")
+        dateString = ""
+    dateString.let {
+        val date = dateFormat.parse(dateString)
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+        val outputFormat = SimpleDateFormat("dd/MM/yyyy")
+        val formattedDate = outputFormat.format(date)
+        textView.text = formattedDate
     }
 }
 //
