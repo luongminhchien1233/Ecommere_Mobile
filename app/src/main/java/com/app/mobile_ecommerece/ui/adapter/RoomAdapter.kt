@@ -19,9 +19,9 @@ class RoomAdapter(
     inner class RoomViewHolder(private val binding: ItemRoomBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindData(roomModel: RoomModel) {
             binding.tvRoomName.text = roomModel.nameRoom
-            if(roomModel.icUrl.isNotEmpty()) {
-                Picasso.get().load(roomModel.icUrl).into(binding.roomIc)
-            }
+//            if(roomModel.icUrl.isNotEmpty()) {
+//                Picasso.get().load(roomModel.icUrl).into(binding.roomIc)
+//            }
             binding.layoutRoomItem.setOnClickListener { onClick(roomModel) }
         }
     }

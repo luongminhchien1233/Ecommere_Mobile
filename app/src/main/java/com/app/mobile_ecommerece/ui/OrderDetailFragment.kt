@@ -12,10 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.app.mobile_ecommerece.base.BaseFragment
 import com.app.mobile_ecommerece.databinding.FragmentMyOrderBinding
 import com.app.mobile_ecommerece.databinding.FragmentMyOrderDetailsBinding
-import com.app.mobile_ecommerece.model.AddressModel
-import com.app.mobile_ecommerece.model.OrderData
-import com.app.mobile_ecommerece.model.OrderProductModel
-import com.app.mobile_ecommerece.model.ProductCartModel
+import com.app.mobile_ecommerece.model.*
 import com.app.mobile_ecommerece.ui.adapter.AddressAdapter
 import com.app.mobile_ecommerece.ui.adapter.OrderAdapter
 import com.app.mobile_ecommerece.ui.adapter.ProductOrderAdapter
@@ -68,7 +65,7 @@ class OrderDetailFragment : BaseFragment<FragmentMyOrderDetailsBinding>(true) {
 
     }
 
-    private val onItemClick: (OrderProductModel) -> Unit = {
+    private val onItemClick: (CartModel) -> Unit = {
 
     }
 }

@@ -43,7 +43,7 @@ class StoreViewModel @Inject constructor(
         showLoading(true)
         parentJob = viewModelScope.launch(handler) {
             val fetchedProducts = productRespository.getAllProducts()
-            _productsData.postValue(fetchedProducts.product)
+            _productsData.postValue(fetchedProducts)
         }
         registerJobFinish()
     }

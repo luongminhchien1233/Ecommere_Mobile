@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.app.mobile_ecommerece.base.BaseFragment
@@ -54,6 +55,12 @@ class CartFragment : BaseFragment<FragmentCartBinding>(false) {
             cartViewModel.clearCart()
             cartAdapter.clear()
             binding.tvTotalCart.text = "0";
+        }
+        binding.btnCheckout.setOnClickListener {
+            if(cartViewModel.getSize() > 0){
+                val action: NavDirections = CartFragmentDirections.actionCartFragmentToCheckoutFragment()
+                navigateAction(action)
+            }
         }
         //binding.tvTotalCart.text = binding.cartViewModel.cartData.value!!.cartTotal.toString()
         val controller = findNavController()

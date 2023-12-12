@@ -12,7 +12,7 @@ class ProductRespository @Inject constructor(private val productRemoteService: P
     suspend fun getAllProducts() = withContext(Dispatchers.IO) {
         when (val result = productRemoteService.getAllProducts()) {
             is NetWorkResult.Success -> {
-                val data = result.data.data
+                val data = result.data.data!!.product
                 if (data == null)
                     throw NetworkErrorException("Product Empty")
                 else

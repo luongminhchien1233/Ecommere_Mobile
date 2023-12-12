@@ -50,7 +50,7 @@ class HomeViewModel @Inject constructor(
             _roomsData.postValue(fetchedRooms)
 
 //            _categoryRadioData.postValue(toListCategoryRadioButton(fetchedCategories))
-            _productsData.postValue(fetchedProducts.product)
+            _productsData.postValue(fetchedProducts)
             isFetchDataSuccess.postValue(Event(true))
         }
         registerJobFinish()

@@ -2,6 +2,16 @@
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="orderViewModel"
+            type="com.app.mobile_ecommerece.viewmodels.OrderViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,7 +36,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvPlaceOrder">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/LayoutText"
+                    android:id="@+id/LayoutInfoUser"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="24dp"
@@ -39,7 +49,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <LinearLayout
-                        android:id="@+id/linearLayout"
+                        android:id="@+id/linearLayoutUser"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -57,7 +67,7 @@
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/ipName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -69,13 +79,13 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/linearLayout2"
+                        android:id="@+id/linearLayoutUser2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:weightSum="1"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayoutUser">
 
                         <TextView
                             android:id="@+id/tvEmail"
@@ -87,7 +97,7 @@
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/ipEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -99,13 +109,13 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/linearLayout3"
+                        android:id="@+id/linearLayoutUser3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:weightSum="1"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayoutUser2">
 
                         <TextView
                             android:id="@+id/tvPhone"
@@ -117,7 +127,7 @@
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/ipPhoneNumber"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -219,7 +229,7 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:id="@+id/tvStatePlaceOrder"
+                            android:id="@+id/tvNote"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="0dp"
@@ -249,7 +259,7 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:id="@+id/tvAddressLine1"
+                            android:id="@+id/tvProvince"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="0dp"
@@ -279,7 +289,7 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:id="@+id/tvAddressLine2"
+                            android:id="@+id/tvDisctrict"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="0dp"
@@ -309,7 +319,7 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:id="@+id/tvCityOrder"
+                            android:id="@+id/tvWard"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="0dp"
@@ -338,6 +348,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
+                    app:items="@{orderViewModel.cartItemData}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

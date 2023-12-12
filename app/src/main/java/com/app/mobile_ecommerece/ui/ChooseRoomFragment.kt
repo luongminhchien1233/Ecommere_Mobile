@@ -9,18 +9,14 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.app.mobile_ecommerece.base.BaseFragment
-import com.app.mobile_ecommerece.databinding.FragmentAddressListBinding
 import com.app.mobile_ecommerece.databinding.FragmentChooseRoomBinding
-import com.app.mobile_ecommerece.model.AddressModel
 import com.app.mobile_ecommerece.model.RoomModel
-import com.app.mobile_ecommerece.ui.adapter.AddressAdapter
 import com.app.mobile_ecommerece.ui.adapter.RoomAdapter
-import com.app.mobile_ecommerece.viewmodels.AddressViewModel
 import com.app.mobile_ecommerece.viewmodels.StoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ChooseFragment : BaseFragment<FragmentChooseRoomBinding>(true) {
+class ChooseRoomFragment : BaseFragment<FragmentChooseRoomBinding>(true) {
     private val storeViewModel: StoreViewModel by activityViewModels()
     private val roomAdapter: RoomAdapter by lazy{
         RoomAdapter(requireContext(), onRoomItemClick)
@@ -46,7 +42,7 @@ class ChooseFragment : BaseFragment<FragmentChooseRoomBinding>(true) {
 
     private fun setUpNavigate(){
         binding.ibBack.setOnClickListener {
-            val action: NavDirections = ChooseFragmentDirections.actionChooseRoomFragmentToStoreFragment(roomId)
+            val action: NavDirections = ChooseRoomFragmentDirections.actionChooseRoomFragmentToStoreFragment(roomId)
             navigateAction(action)
         }
     }

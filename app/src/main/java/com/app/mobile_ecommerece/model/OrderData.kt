@@ -11,7 +11,7 @@ data class OrderData(
     val name: String,
     val email: String,
     val phoneNumber: String,
-    val products: List<OrderProductModel>,
+    val products: List<CartModel>,
     val total: Int,
     val status: String,
     val orderby: String,

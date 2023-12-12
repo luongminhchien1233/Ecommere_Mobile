@@ -11,7 +11,9 @@ data class AddressModel(
     val district: String,
     val ward: String,
     val note: String,
-    val default: Boolean
+    var default: Boolean
 ) : Parcelable {
-
+    fun toAddressOrderModel(): OrderAddressModel {
+        return OrderAddressModel(province, district, ward, note)
+    }
 }

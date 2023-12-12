@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.mobile_ecommerece.common.BindableAdapter
 import com.app.mobile_ecommerece.databinding.ItemOrderBinding
 import com.app.mobile_ecommerece.databinding.ItemProductOrderBinding
+import com.app.mobile_ecommerece.model.CartModel
 import com.app.mobile_ecommerece.model.OrderData
 import com.app.mobile_ecommerece.model.OrderProductModel
 import com.app.mobile_ecommerece.model.ProductCartModel
@@ -15,12 +16,12 @@ import com.squareup.picasso.Picasso
 
 class ProductOrderAdapter(
     private val context: Context,
-    private val onClick : (OrderProductModel) -> Unit
-) : RecyclerView.Adapter<ProductOrderAdapter.ProductOrderViewHolder>(), BindableAdapter<OrderProductModel> {
+    private val onClick : (CartModel) -> Unit
+) : RecyclerView.Adapter<ProductOrderAdapter.ProductOrderViewHolder>(), BindableAdapter<CartModel> {
 
-    private var productList: List<OrderProductModel> = listOf()
+    private var productList: List<CartModel> = listOf()
     inner class ProductOrderViewHolder(private val binding: ItemProductOrderBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindData(productModel: OrderProductModel) {
+        fun bindData(productModel: CartModel) {
             binding.product = productModel
             binding.tvQuantity2.text = productModel.quantity.toString()
             Picasso.get().load(productModel.product!!.images[0].url).into(binding.shapeableImageView)
@@ -42,7 +43,7 @@ class ProductOrderAdapter(
         }
     }
 
-    override fun setItems(items: List<OrderProductModel>) {
+    override fun setItems(items: List<CartModel>) {
         productList = items
         Log.d("SetItem icon adapter ", "")
         notifyDataSetChanged()

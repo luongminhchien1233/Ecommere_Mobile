@@ -8,9 +8,7 @@ data class RoomModel(
     val _id: String,
 
     val nameRoom: String,
-
-    val icUrl: String,
-
+    
 ) : Parcelable {
 
 }

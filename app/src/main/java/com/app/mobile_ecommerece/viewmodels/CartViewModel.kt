@@ -61,5 +61,9 @@ class CartViewModel @Inject constructor(
     fun checkIsLogin(): Boolean {
         return tokenRepository.checkIsLogin()
     }
+
+    fun getSize() : Int{
+        return _cartItemData.value!!.size;
+    }
 }
 
