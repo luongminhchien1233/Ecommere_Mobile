@@ -3,9 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable
-            name="product"
-            type="com.example.ecommerce_mobile_app.model.Product" />/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,8 +32,8 @@
                 android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:setImage="@{product.mainImagePath}" />
-
+                />
+<!-- app:setImage=""-->
             <TextView
                 android:id="@+id/tvNameItem"
                 android:layout_width="match_parent"

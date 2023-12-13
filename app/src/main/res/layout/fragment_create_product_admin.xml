@@ -3,9 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable
-            name="customer"
-            type="" />
     </data>
 
     <ScrollView
@@ -370,7 +367,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:inputType="text"
                         android:paddingTop="10dp"
-                        android:text="@{customer.city}"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
                         android:textSize="16sp"
@@ -414,7 +411,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:inputType="text"
                         android:paddingTop="10dp"
-                        android:text="@{customer.city}"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
                         android:textSize="16sp"
@@ -457,7 +454,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:inputType="text"
                         android:paddingTop="10dp"
-                        android:text="@{customer.city}"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
                         android:textSize="16sp"
