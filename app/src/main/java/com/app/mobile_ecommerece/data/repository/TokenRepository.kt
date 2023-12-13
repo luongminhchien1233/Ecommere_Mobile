@@ -7,6 +7,7 @@ import javax.inject.Inject
 class TokenRepository @Inject constructor(private val appSharePreference: AppSharePreference) {
     companion object {
         private const val ACCESS_TOKEN_KEY = "access_token"
+        private const val ROLE = "role"
         private const val REMEMBER = "remember_me_logg"
     }
 
@@ -38,10 +39,21 @@ class TokenRepository @Inject constructor(private val appSharePreference: AppSha
         return sharedPreferences.getBoolean(REMEMBER, false)
     }
 
+    fun setRole(role: String) {
+        val sharedPreferences = appSharePreference.getSharedPreferences()
+        sharedPreferences.edit().putString(ROLE, role).apply()
+    }
+
+    fun getRole(): String? {
+        val sharedPreferences = appSharePreference.getSharedPreferences()
+        return sharedPreferences.getString(ROLE, null)
+    }
+
     fun removeToken() {
         val sharedPreferences = appSharePreference.getSharedPreferences()
         sharedPreferences.edit().remove(ACCESS_TOKEN_KEY).apply()
         sharedPreferences.edit().putBoolean(REMEMBER, false).apply()
+        sharedPreferences.edit().remove(ROLE).apply()
     }
 
     fun checkIsLogin(): Boolean {

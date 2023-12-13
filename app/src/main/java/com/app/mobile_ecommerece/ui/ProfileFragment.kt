@@ -62,7 +62,31 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(false) {
         binding.lifecycleOwner = viewLifecycleOwner
         observerEvent()
         setUpNavigate()
+        if(userViewModel.checkIsLogin()){
+            if(userViewModel.isAdmin() == true){
+                binding.LayoutAdmin.visibility = View.VISIBLE
+            }
+            else{
+                binding.LayoutAdmin.visibility = View.GONE
+            }
+            binding.btnLogoutProfile.text = "Logout"
+            binding.btnLogoutProfile.setOnClickListener {
+                userViewModel.logout()
+                val action: NavDirections = ProfileFragmentDirections.actionProfileFragmentToLoginFragment()
+                navigateAction(action)
+            }
+        }
+        else{
+            binding.LayoutAdmin.visibility = View.GONE
+            binding.btnLogoutProfile.text = "Login"
+            binding.btnLogoutProfile.setOnClickListener {
+                val action: NavDirections = ProfileFragmentDirections.actionProfileFragmentToLoginFragment()
+                navigateAction(action)
+            }
+        }
         val controller = findNavController()
     }
+
+
 
 }

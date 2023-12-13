@@ -210,6 +210,12 @@
             app:enterAnim="@android:anim/fade_in"
             app:popEnterAnim="@android:anim/fade_in" />
 
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
     </fragment>
 
     <fragment

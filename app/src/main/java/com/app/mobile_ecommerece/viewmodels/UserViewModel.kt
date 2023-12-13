@@ -34,9 +34,23 @@ class UserViewModel @Inject constructor(
             tokenRepository.removeToken()
             tokenRepository.saveToken(user.toTokenModel())
             tokenRepository.setRemember(remember)
+            tokenRepository.setRole(user.role)
             navigateToPage(R.id.action_loginFragment_to_homeFragment)
         }
         registerJobFinish()
+    }
+
+    fun isAdmin(): Boolean? {
+        if(tokenRepository.getRole() == "admin"){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+
+    fun logout() {
+        tokenRepository.removeToken()
     }
 
     fun setRemember(remember: Boolean) {
