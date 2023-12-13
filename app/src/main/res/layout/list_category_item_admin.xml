@@ -5,12 +5,13 @@
     <data>
         <variable
             name="product"
-            type="com.app.mobile_ecommerece.model.ProductModel" />
+            type="com.example.ecommerce_mobile_app.model.Product" />/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="170dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:paddingTop="2dp"
         android:paddingBottom="2dp">
@@ -20,8 +21,6 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
             android:background="@drawable/custom_layout_item_list"
             android:paddingBottom="5dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,56 +31,29 @@
                 android:layout_width="150dp"
                 android:layout_height="170dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:setImage="@{product.mainImagePath}" />
 
             <TextView
                 android:id="@+id/tvNameItem"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
                 android:fontFamily="@font/poppins_bold"
                 android:maxLength="20"
-                android:text="@{product.name}"
+                android:text="Sofa"
                 android:textColor="@color/black"
                 android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgItemList" />
-
-            <TextView
-                android:id="@+id/tvInfoItemList"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
-                android:fontFamily="@font/poppins_extralight"
-                android:text="@{product.description}"
-                android:textColor="@color/black"
-                android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvNameItem" />
-
-            <TextView
-                android:id="@+id/tvPriceItemList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text=""
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvInfoItemList" />
-
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
