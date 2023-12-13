@@ -11,6 +11,7 @@ import com.app.mobile_ecommerece.data.repository.OrderRespository
 import com.app.mobile_ecommerece.data.repository.UserRepository
 import com.app.mobile_ecommerece.model.*
 import com.app.mobile_ecommerece.model.Request.CartRequest
+import com.app.mobile_ecommerece.model.Request.CreateOrderRequest
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -80,6 +81,17 @@ class OrderViewModel @Inject constructor(
                 if (addressModel.default == true) {
                     _addressChooseData.postValue(addressModel.toAddressOrderModel())
                 }
+            }
+        }
+        registerJobFinish()
+    }
+
+    fun createOrder(orderRequest: CreateOrderRequest) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val status = orderRespository.createOrder(orderRequest)
+            if(status!!.status == "success"){
+                navigateToPage(R.id.action_checkoutFragment_to_orderSuccessFragment)
             }
         }
         registerJobFinish()
