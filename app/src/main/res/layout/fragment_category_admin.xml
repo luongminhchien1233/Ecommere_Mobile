@@ -3,6 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <variable
+            name="adminViewModel"
+            type="com.app.mobile_ecommerece.viewmodels.AdminViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <ScrollView
@@ -98,9 +103,11 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
+                    app:items="@{adminViewModel.categoriesData}"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -112,12 +119,24 @@
                 android:id="@+id/tvCate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Category"
                 android:textColor="@color/black"
                 android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/icon_arrow"
+                android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

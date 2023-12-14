@@ -55,6 +55,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(false) {
                 navigateAction(action)
             }
         }
+        binding.LayoutAdmin.setOnClickListener {
+            if(userViewModel.checkIsLogin()){
+                if(userViewModel.isAdmin() == true) {
+                    val action: NavDirections = ProfileFragmentDirections.actionProfileFragmentToAdminManagerFragment()
+                    navigateAction(action)
+                }
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

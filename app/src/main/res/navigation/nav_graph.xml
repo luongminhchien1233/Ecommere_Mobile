@@ -216,6 +216,12 @@
             app:enterAnim="@android:anim/fade_in"
             app:popEnterAnim="@android:anim/fade_in" />
 
+        <action
+            android:id="@+id/action_profileFragment_to_adminManagerFragment"
+            app:destination="@id/adminManagerFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
     </fragment>
 
     <fragment
@@ -309,6 +315,59 @@
             app:argType="com.app.mobile_ecommerece.model.AddressModel"
             app:nullable="true"
             android:defaultValue="@null" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/adminManagerFragment"
+        android:name="com.app.mobile_ecommerece.ui.Admin.ui.FragmentManagerAdmin"
+        android:label="Admin Manager"
+        tools:layout="@layout/fragment_manager_admin" >
+
+        <action
+            android:id="@+id/action_adminManagerFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
+        <action
+            android:id="@+id/action_adminManagerFragment_to_adminCategorytFragment"
+            app:destination="@id/adminCategorytFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+        <action
+            android:id="@+id/action_adminManagerFragment_to_adminRoomFragment"
+            app:destination="@id/adminRoomFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/adminCategorytFragment"
+        android:name="com.app.mobile_ecommerece.ui.Admin.ui.FragmentAdminCategory"
+        android:label="Admin Category"
+        tools:layout="@layout/fragment_category_admin" >
+
+        <action
+            android:id="@+id/action_adminCategorytFragment_to_adminManagerFragment"
+            app:destination="@id/adminManagerFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/adminRoomFragment"
+        android:name="com.app.mobile_ecommerece.ui.Admin.ui.FragmentAdminRoom"
+        android:label="Admin Room"
+        tools:layout="@layout/fragment_room_admin" >
+
+        <action
+            android:id="@+id/action_adminRoomFragment_to_adminManagerFragment"
+            app:destination="@id/adminManagerFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
 
     </fragment>
 
