@@ -5,9 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.app.mobile_ecommerece.base.BaseViewModel
 import com.app.mobile_ecommerece.data.repository.CategoryRepository
+import com.app.mobile_ecommerece.data.repository.OrderRespository
 import com.app.mobile_ecommerece.data.repository.RoomRespository
+import com.app.mobile_ecommerece.data.repository.UserRepository
 import com.app.mobile_ecommerece.model.CategoryModel
+import com.app.mobile_ecommerece.model.OrderData
 import com.app.mobile_ecommerece.model.RoomModel
+import com.app.mobile_ecommerece.model.UserAdminDataJson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,6 +20,8 @@ import javax.inject.Inject
 class AdminViewModel @Inject constructor(
     private val categoryRespository: CategoryRepository,
     private val roomRespository: RoomRespository,
+    private val userRespository: UserRepository,
+    private val orderRespository: OrderRespository
 ) : BaseViewModel() {
 
     private var _categoriesData = MutableLiveData<List<CategoryModel>>()
@@ -23,6 +29,12 @@ class AdminViewModel @Inject constructor(
 
     private var _roomsData = MutableLiveData<List<RoomModel>>()
     val roomsData: LiveData<List<RoomModel>> = _roomsData
+
+    private var _usersData = MutableLiveData<List<UserAdminDataJson>>()
+    val usersData: LiveData<List<UserAdminDataJson>> = _usersData
+
+    private var _ordersData = MutableLiveData<List<OrderData>>()
+    val ordersData: LiveData<List<OrderData>> = _ordersData
     fun getALlCategories() {
         showLoading(true)
         parentJob = viewModelScope.launch(handler) {
@@ -37,6 +49,24 @@ class AdminViewModel @Inject constructor(
         parentJob = viewModelScope.launch(handler) {
             val fetchedRoom = roomRespository.getAllRooms()
             _roomsData.postValue(fetchedRoom)
+        }
+        registerJobFinish()
+    }
+
+    fun getALlUser() {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val fetchedData = userRespository.getAllUser()
+            _usersData.postValue(fetchedData)
+        }
+        registerJobFinish()
+    }
+
+    fun getALlOrder() {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val fetchedData = orderRespository.getAllUserOrder()
+            _ordersData.postValue(fetchedData)
         }
         registerJobFinish()
     }

@@ -14,7 +14,7 @@ data class OrderData(
     val products: List<CartModel>,
     val total: Int,
     val status: String,
-    val orderby: String,
+    val orderby: OrderByModel,
     val orderTime: String
 ) : Parcelable {
 

@@ -26,6 +26,21 @@ class OrderRespository @Inject constructor(private val orderRemoteService: Order
         }
     }
 
+    suspend fun getAllUserOrder() = withContext(Dispatchers.IO) {
+        when (val result = orderRemoteService.getAllUserOrder()) {
+            is NetWorkResult.Success -> {
+                val data = result.data.data
+                if (data == null)
+                    throw NetworkErrorException("Order Empty")
+                else
+                    data
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
+
     suspend fun createOrder(orderRequest: CreateOrderRequest) = withContext(Dispatchers.IO) {
         when (val result = orderRemoteService.createOrder(orderRequest)) {
             is NetWorkResult.Success -> {

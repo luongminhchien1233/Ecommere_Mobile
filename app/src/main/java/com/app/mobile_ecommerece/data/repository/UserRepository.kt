@@ -53,4 +53,15 @@ class UserRepository @Inject constructor(private val userRemoteService: UserRemo
             }
         }
     }
+
+    suspend fun getAllUser() = withContext(Dispatchers.IO) {
+        when (val result = userRemoteService.getAllUser()) {
+            is NetWorkResult.Success -> {
+                result.data.data!!;
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
 }

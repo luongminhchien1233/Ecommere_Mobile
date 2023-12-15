@@ -22,4 +22,7 @@ interface UserApi {
 
     @PUT(ConstantsURL.PROFILE_UPDATE_URL)
     suspend fun updateProfile(@Body profileRequest: ProfileRequest): Response<CustomResponse<UserJson>>
+
+    @GET(ConstantsURL.GET_ALL_USER)
+    suspend fun getAllUser(): Response<CustomResponse<List<UserAdminDataJson>>>
 }

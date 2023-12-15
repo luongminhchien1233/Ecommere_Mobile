@@ -21,4 +21,7 @@ class UserRemoteService @Inject constructor(private val userApi: UserApi) : Base
 
     suspend fun updateProfile(profileRequest: ProfileRequest): NetWorkResult<CustomResponse<UserJson>> =
         handleApi { userApi.updateProfile(profileRequest) }
+
+    suspend fun getAllUser(): NetWorkResult<CustomResponse<List<UserAdminDataJson>>> =
+        handleApi { userApi.getAllUser() }
 }

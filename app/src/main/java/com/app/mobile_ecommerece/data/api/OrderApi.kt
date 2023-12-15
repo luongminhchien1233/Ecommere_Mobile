@@ -18,4 +18,7 @@ interface OrderApi {
     @GET(ConstantsURL.ORDER_GET_URL)
     suspend fun getUserOrder(): Response<CustomResponse<List<OrderData>>>
 
+    @GET(ConstantsURL.ORDER_GETALL_URL)
+    suspend fun getAllUserOrder(): Response<CustomResponse<List<OrderData>>>
+
 }
