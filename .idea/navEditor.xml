@@ -97,6 +97,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_adminManagerFragment_to_adminOrderFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_adminManagerFragment_to_adminRoomFragment">
                               <value>
                                 <LayoutPositions />
@@ -112,7 +117,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="adminRoomFragment">
+                  <entry key="adminOrderFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -123,7 +128,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_adminRoomFragment_to_adminManagerFragment">
+                            <entry key="action_adminOrderFragment_to_adminManagerFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -133,7 +138,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="adminorFragment">
+                  <entry key="adminRoomFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -322,6 +327,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="orderDetailAdminFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

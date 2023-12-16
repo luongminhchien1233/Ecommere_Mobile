@@ -3,6 +3,7 @@ package com.app.mobile_ecommerece.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseViewModel
 import com.app.mobile_ecommerece.data.repository.CategoryRepository
 import com.app.mobile_ecommerece.data.repository.OrderRespository
@@ -10,6 +11,8 @@ import com.app.mobile_ecommerece.data.repository.RoomRespository
 import com.app.mobile_ecommerece.data.repository.UserRepository
 import com.app.mobile_ecommerece.model.CategoryModel
 import com.app.mobile_ecommerece.model.OrderData
+import com.app.mobile_ecommerece.model.Request.AddressRequest
+import com.app.mobile_ecommerece.model.Request.OrderRequest
 import com.app.mobile_ecommerece.model.RoomModel
 import com.app.mobile_ecommerece.model.UserAdminDataJson
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -67,6 +70,14 @@ class AdminViewModel @Inject constructor(
         parentJob = viewModelScope.launch(handler) {
             val fetchedData = orderRespository.getAllUserOrder()
             _ordersData.postValue(fetchedData)
+        }
+        registerJobFinish()
+    }
+
+    fun updateOrder(orderRequest: OrderRequest, id: String) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val data = orderRespository.updateOrder(orderRequest, id)
         }
         registerJobFinish()
     }

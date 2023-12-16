@@ -1,15 +1,11 @@
 package com.app.mobile_ecommerece.data.api
 
-import com.app.mobile_ecommerece.model.CartData
-import com.app.mobile_ecommerece.model.CustomResponse
-import com.app.mobile_ecommerece.model.OrderData
+import com.app.mobile_ecommerece.model.*
 import com.app.mobile_ecommerece.model.Request.CreateOrderRequest
-import com.app.mobile_ecommerece.model.SimpleRespone
+import com.app.mobile_ecommerece.model.Request.OrderRequest
+import com.app.mobile_ecommerece.model.Request.ProfileRequest
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface OrderApi {
     @POST(ConstantsURL.ORDER_URL)
@@ -20,5 +16,8 @@ interface OrderApi {
 
     @GET(ConstantsURL.ORDER_GETALL_URL)
     suspend fun getAllUserOrder(): Response<CustomResponse<List<OrderData>>>
+
+    @PUT(ConstantsURL.ORDER_UPDATE_ADMIN_URL)
+    suspend fun updateOrderStatus(@Body orderRequest: OrderRequest, @Path("id") id: String): Response<SimpleRespone>
 
 }

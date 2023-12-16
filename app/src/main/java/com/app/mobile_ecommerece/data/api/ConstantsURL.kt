@@ -27,5 +27,6 @@ object ConstantsURL {
     const val ORDER_GETALL_URL = "order/getAll"
     const val ORDER_GET_URL = "order/myOrder"
     const val ORDER_DETAILS_URL = "order/detail/{id}"
+    const val ORDER_UPDATE_ADMIN_URL = "order/admin/{id}"
     const val GET_ALL_USER = "/user/all-users"
 }

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.mobile_ecommerece.common.BindableAdapter
 import com.app.mobile_ecommerece.databinding.ItemAdminOrderBinding
 import com.app.mobile_ecommerece.databinding.ItemOrderBinding
+import com.app.mobile_ecommerece.model.CategoryModel
 import com.app.mobile_ecommerece.model.OrderData
 
 class OrderAdminAdapter(
@@ -45,4 +46,8 @@ class OrderAdminAdapter(
         notifyDataSetChanged()
     }
 
+    fun setFilterList(items: List<OrderData>){
+        this.orderList = items as ArrayList<OrderData>
+        notifyDataSetChanged()
+    }
 }
