@@ -50,6 +50,10 @@ class FragmentAdminCategory : BaseFragment<FragmentCategoryAdminBinding>(true) {
             val action: NavDirections = FragmentAdminCategoryDirections.actionAdminCategorytFragmentToAdminManagerFragment()
             navigateAction(action)
         }
+        binding.btnCreate.setOnClickListener {
+            val action: NavDirections = FragmentAdminCategoryDirections.actionAdminCategorytFragmentToAdminEditCategorytFragment()
+            navigateAction(action)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,6 +68,7 @@ class FragmentAdminCategory : BaseFragment<FragmentCategoryAdminBinding>(true) {
     }
 
     private val onItemClick: (CategoryModel) -> Unit = {
-
+        val action: NavDirections = FragmentAdminCategoryDirections.actionAdminCategorytFragmentToAdminEditCategorytFragment(it)
+        navigateAction(action)
     }
 }

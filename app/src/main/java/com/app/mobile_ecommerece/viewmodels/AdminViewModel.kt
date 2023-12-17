@@ -12,6 +12,7 @@ import com.app.mobile_ecommerece.data.repository.UserRepository
 import com.app.mobile_ecommerece.model.CategoryModel
 import com.app.mobile_ecommerece.model.OrderData
 import com.app.mobile_ecommerece.model.Request.AddressRequest
+import com.app.mobile_ecommerece.model.Request.CreateCategoryRequest
 import com.app.mobile_ecommerece.model.Request.OrderRequest
 import com.app.mobile_ecommerece.model.RoomModel
 import com.app.mobile_ecommerece.model.UserAdminDataJson
@@ -78,6 +79,17 @@ class AdminViewModel @Inject constructor(
         showLoading(true)
         parentJob = viewModelScope.launch(handler) {
             val data = orderRespository.updateOrder(orderRequest, id)
+        }
+        registerJobFinish()
+    }
+
+    fun createCategory(createCategoryRequest: CreateCategoryRequest) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val data = categoryRespository.createCategory(createCategoryRequest)
+            if(data.status == "success"){
+                navigateToPage(R.id.action_adminEditCategorytFragment_to_adminCategorytFragment)
+            }
         }
         registerJobFinish()
     }

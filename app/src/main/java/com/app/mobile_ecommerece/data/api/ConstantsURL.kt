@@ -9,6 +9,7 @@ object ConstantsURL {
     const val PROFILE_URL = "user/info-user"
     const val PROFILE_UPDATE_URL = "user/update-user"
     const val CATEGORY_URL = "category/all"
+    const val CATEGORY_ADD_URL = "category/create-cate"
     const val PRODUCT_URL = "product/getAllProduct"
     const val PRODUCT_BYCATE_URL = "product/category/{id}"
     const val PRODUCT_BYROOM_URL = "product/room/{id}"
