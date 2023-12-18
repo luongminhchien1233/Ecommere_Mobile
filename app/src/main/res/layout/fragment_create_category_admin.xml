@@ -131,7 +131,7 @@
                     <EditText
                         android:id="@+id/etCategory"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/poppins_medium"
                         android:inputType="text"
@@ -173,8 +173,7 @@
                     <EditText
                         android:id="@+id/etIcon"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@null"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/poppins_medium"
                         android:inputType="text"

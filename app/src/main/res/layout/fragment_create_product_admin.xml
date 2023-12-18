@@ -101,8 +101,7 @@
                     <EditText
                         android:id="@+id/etQuantity"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@null"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/poppins_medium"
                         android:inputType="number"
@@ -144,8 +143,7 @@
                     <EditText
                         android:id="@+id/etSale"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@null"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/poppins_medium"
                         android:inputType="number"
@@ -187,8 +185,7 @@
                     <EditText
                         android:id="@+id/etPrice"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@null"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/poppins_medium"
                         android:inputType="number"
@@ -318,8 +315,7 @@
                     <EditText
                         android:id="@+id/etShortDescription"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@null"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/poppins_medium"
                         android:inputType="text"
@@ -361,8 +357,7 @@
                     <EditText
                         android:id="@+id/etDescription"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@null"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/poppins_medium"
                         android:inputType="text"
@@ -405,8 +400,7 @@
                     <EditText
                         android:id="@+id/etCode"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@null"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/poppins_medium"
                         android:inputType="text"
@@ -448,8 +442,7 @@
                     <EditText
                         android:id="@+id/etName"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@null"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/poppins_medium"
                         android:inputType="text"

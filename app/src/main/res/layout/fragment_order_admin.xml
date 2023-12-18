@@ -40,22 +40,22 @@
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginRight="40dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
                 android:background="@drawable/background_edittext"
                 android:iconifiedByDefault="false"
                 android:queryHint="Search Here ..."
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/tvOrder" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/LayoutInfoAddress"
                 android:layout_width="match_parent"
-                android:layout_height="600dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="25dp"
@@ -66,7 +66,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/searchView">
-
 
 
                 <TextView
@@ -87,9 +86,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="20dp"
                     app:items="@{adminViewModel.ordersData}"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv1" />

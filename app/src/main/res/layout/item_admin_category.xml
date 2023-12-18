@@ -6,7 +6,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="170dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
@@ -15,10 +15,10 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/LayoutItem"
-            android:layout_width="160dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:background="@drawable/custom_layout_item_list"
+            android:background="@drawable/custom_layout_item_list_table_admin"
             android:paddingBottom="5dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -32,7 +32,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-<!-- app:setImage=""-->
+            <!-- app:setImage=""-->
             <TextView
                 android:id="@+id/tvNameItem"
                 android:layout_width="match_parent"
