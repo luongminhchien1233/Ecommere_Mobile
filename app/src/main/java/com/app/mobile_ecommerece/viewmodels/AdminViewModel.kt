@@ -93,5 +93,27 @@ class AdminViewModel @Inject constructor(
         }
         registerJobFinish()
     }
+
+    fun updateCategory(id : String,createCategoryRequest: CreateCategoryRequest) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val data = categoryRespository.updateCategory(id, createCategoryRequest)
+            if(data.status == "success"){
+                navigateToPage(R.id.action_adminEditCategorytFragment_to_adminCategorytFragment)
+            }
+        }
+        registerJobFinish()
+    }
+
+    fun deleteCategory(id : String) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val data = categoryRespository.deleteCategory(id)
+            if(data.status == "success"){
+                navigateToPage(R.id.action_adminEditCategorytFragment_to_adminCategorytFragment)
+            }
+        }
+        registerJobFinish()
+    }
 }
 

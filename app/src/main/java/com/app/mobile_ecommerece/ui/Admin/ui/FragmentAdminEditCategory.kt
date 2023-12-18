@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -28,6 +29,8 @@ class FragmentAdminEditCategory : BaseFragment<FragmentCreateCategoryAdminBindin
     private lateinit var roomAdapter: ArrayAdapter<String>
     private var roomData: List<RoomModel> = listOf()
     var roomId = ""
+    var categoryId = ""
+    var nameCate = ""
     override fun inflateBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -82,18 +85,26 @@ class FragmentAdminEditCategory : BaseFragment<FragmentCreateCategoryAdminBindin
             binding.btnEditSave.setOnClickListener {
                 CreateCategory()
             }
+            binding.btnDelete.visibility = View.GONE
         }
         else{
             binding.btnEditSave.text = "Save"
+            categoryId = args.categoryModel?._id.toString()
             binding.btnEditSave.setOnClickListener {
                 UpdateCategory()
             }
+            binding.btnDelete.setOnClickListener {
+                DeleteCategory()
+            }
             binding.etCategory.hint = args.categoryModel?.nameCate.toString()
+            nameCate = args.categoryModel?.nameCate.toString()
+            binding.btnDelete.visibility = View.VISIBLE
         }
         val controller = findNavController()
     }
 
     fun CreateCategory(){
+
         val request = CreateCategoryRequest(binding.etCategory.text.toString(), roomId)
         if(roomId != ""){
             adminViewModel.createCategory(request)
@@ -101,6 +112,17 @@ class FragmentAdminEditCategory : BaseFragment<FragmentCreateCategoryAdminBindin
     }
 
     fun UpdateCategory(){
+        var text = binding.etCategory.text.toString()
+        if(text == ""){
+            text = nameCate.toString()
+        }
+        val request = CreateCategoryRequest(text, roomId)
+        if(roomId != ""){
+            adminViewModel.updateCategory(categoryId, request)
+        }
+    }
 
+    fun DeleteCategory(){
+        adminViewModel.deleteCategory(categoryId)
     }
 }

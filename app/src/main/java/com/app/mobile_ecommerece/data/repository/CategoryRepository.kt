@@ -39,4 +39,34 @@ class CategoryRepository @Inject constructor(private val categoryRemoteService: 
         }
     }
 
+    suspend fun updateCategory(id : String, createCategoryRequest: CreateCategoryRequest) = withContext(Dispatchers.IO) {
+        when (val result = categoryRemoteService.updateCategory(id, createCategoryRequest)) {
+            is NetWorkResult.Success -> {
+                val data = result.data
+                if (data == null)
+                    throw NetworkErrorException("Category Fail")
+                else
+                    data
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
+
+    suspend fun deleteCategory(id : String) = withContext(Dispatchers.IO) {
+        when (val result = categoryRemoteService.deleteCategory(id)) {
+            is NetWorkResult.Success -> {
+                val data = result.data
+                if (data == null)
+                    throw NetworkErrorException("Category Fail")
+                else
+                    data
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
+
 }
