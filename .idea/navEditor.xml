@@ -237,12 +237,38 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_adminUserFragment_to_adminUserInfoFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
                   <entry key="adminUserInfoFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_adminUserInfoFragment_to_adminUserFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="adminprodFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">

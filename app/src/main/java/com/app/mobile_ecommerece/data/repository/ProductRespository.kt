@@ -53,4 +53,19 @@ class ProductRespository @Inject constructor(private val productRemoteService: P
             }
         }
     }
+
+    suspend fun getAllByAdmin() = withContext(Dispatchers.IO) {
+        when (val result = productRemoteService.getAllByAdmin()) {
+            is NetWorkResult.Success -> {
+                val data = result.data.data
+                if (data == null)
+                    throw NetworkErrorException("Product Empty")
+                else
+                    data
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
 }

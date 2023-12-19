@@ -6,11 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseViewModel
 import com.app.mobile_ecommerece.data.repository.*
-import com.app.mobile_ecommerece.model.CategoryModel
-import com.app.mobile_ecommerece.model.OrderData
+import com.app.mobile_ecommerece.model.*
 import com.app.mobile_ecommerece.model.Request.*
-import com.app.mobile_ecommerece.model.RoomModel
-import com.app.mobile_ecommerece.model.UserAdminDataJson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,7 +18,8 @@ class AdminViewModel @Inject constructor(
     private val roomRespository: RoomRespository,
     private val userRespository: UserRepository,
     private val orderRespository: OrderRespository,
-    private val tokenRespository: TokenRepository
+    private val tokenRespository: TokenRepository,
+    private val productRespository: ProductRespository
 ) : BaseViewModel() {
 
     private var _categoriesData = MutableLiveData<List<CategoryModel>>()
@@ -35,6 +33,9 @@ class AdminViewModel @Inject constructor(
 
     private var _ordersData = MutableLiveData<List<OrderData>>()
     val ordersData: LiveData<List<OrderData>> = _ordersData
+
+    private var _productsData = MutableLiveData<List<ProductAdminModel>>()
+    val productsData: LiveData<List<ProductAdminModel>> = _productsData
     fun isAdmin(): Boolean? {
         if(tokenRespository.getRole() == "admin"){
             return true
@@ -58,6 +59,16 @@ class AdminViewModel @Inject constructor(
         }
         registerJobFinish()
     }
+
+    fun getAllProducts() {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val fetchedData = productRespository.getAllByAdmin()
+            _productsData.postValue(fetchedData)
+        }
+        registerJobFinish()
+    }
+
     fun getALlCategories() {
         showLoading(true)
         parentJob = viewModelScope.launch(handler) {

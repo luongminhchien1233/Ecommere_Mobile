@@ -3,6 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <variable
+            name="adminViewModel"
+            type="com.app.mobile_ecommerece.viewmodels.AdminViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <ScrollView
@@ -33,7 +38,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/LayoutInfoAddress"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="25dp"
@@ -43,46 +48,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCate">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/LayoutSearch"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="12dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <EditText
-                        android:id="@+id/etSearch"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/custom_border_primary_admin"
-                        android:ems="10"
-                        android:hint="Search..."
-                        android:inputType="textPersonName"
-                        android:paddingLeft="40dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:textColor="#f8f9fe"
-                        android:textColorHint="#7c85a6"
-                        android:textSize="16dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageButton
-                        android:id="@+id/btnSearch"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/icon_search"
-                        android:scaleType="fitXY"
-                        app:layout_constraintStart_toStartOf="@+id/etSearch"
-                        app:layout_constraintTop_toTopOf="@+id/etSearch" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintTop_toBottomOf="@+id/searchView">
 
                 <TextView
                     android:id="@+id/tv1"
@@ -98,26 +64,56 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="20dp"
+                    app:items="@{adminViewModel.productsData}"
                     android:layout_marginEnd="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/LayoutSearch" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv1" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/tvCate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginLeft="100dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Products"
                 android:textColor="@color/black"
                 android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/background_edittext"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search Here ..."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCate" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/icon_arrow"
+                android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
