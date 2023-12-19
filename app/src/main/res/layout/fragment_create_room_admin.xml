@@ -3,6 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <variable
+            name="adminViewModel"
+            type="com.app.mobile_ecommerece.viewmodels.AdminViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <ScrollView
@@ -15,14 +20,26 @@
             android:layout_height="match_parent"
             android:background="#f9f9fa">
 
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/icon_arrow"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginLeft="100dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Create Category"
+                android:text="Create Room"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -139,6 +156,24 @@
                     android:background="@drawable/custom_btn_primary"
                     android:fontFamily="@font/poppins_bold"
                     android:text="Save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Layout2" />
+
+                <android.widget.Button
+                    android:id="@+id/btnDelete"
+                    android:layout_width="85dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="120dp"
+                    android:layout_marginRight="120dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/custom_btn_primary"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Delete"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="16sp"

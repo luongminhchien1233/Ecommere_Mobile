@@ -47,6 +47,10 @@ class FragmentAdminRoom : BaseFragment<FragmentRoomAdminBinding>(true) {
             val action: NavDirections = FragmentAdminRoomDirections.actionAdminRoomFragmentToAdminManagerFragment()
             navigateAction(action)
         }
+        binding.btnCreate.setOnClickListener {
+            val action: NavDirections = FragmentAdminRoomDirections.actionAdminRoomFragmentToAdminEditRoomFragment()
+            navigateAction(action)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,6 +65,7 @@ class FragmentAdminRoom : BaseFragment<FragmentRoomAdminBinding>(true) {
     }
 
     private val onItemClick: (RoomModel) -> Unit = {
-
+        val action: NavDirections = FragmentAdminRoomDirections.actionAdminRoomFragmentToAdminEditRoomFragment(it)
+        navigateAction(action)
     }
 }

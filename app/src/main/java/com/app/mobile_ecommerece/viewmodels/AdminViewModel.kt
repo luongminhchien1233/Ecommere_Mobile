@@ -13,6 +13,7 @@ import com.app.mobile_ecommerece.model.CategoryModel
 import com.app.mobile_ecommerece.model.OrderData
 import com.app.mobile_ecommerece.model.Request.AddressRequest
 import com.app.mobile_ecommerece.model.Request.CreateCategoryRequest
+import com.app.mobile_ecommerece.model.Request.CreateRoomRequest
 import com.app.mobile_ecommerece.model.Request.OrderRequest
 import com.app.mobile_ecommerece.model.RoomModel
 import com.app.mobile_ecommerece.model.UserAdminDataJson
@@ -111,6 +112,39 @@ class AdminViewModel @Inject constructor(
             val data = categoryRespository.deleteCategory(id)
             if(data.status == "success"){
                 navigateToPage(R.id.action_adminEditCategorytFragment_to_adminCategorytFragment)
+            }
+        }
+        registerJobFinish()
+    }
+
+    fun createRoom(createRoomRequest: CreateRoomRequest) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val data = roomRespository.createRoom(createRoomRequest)
+            if(data.status == "success"){
+                navigateToPage(R.id.action_adminEditRoomFragment_to_adminRoomFragment)
+            }
+        }
+        registerJobFinish()
+    }
+
+    fun updateRoom(id : String,createRoomRequest: CreateRoomRequest) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val data = roomRespository.updateRoom(id, createRoomRequest)
+            if(data.status == "success"){
+                navigateToPage(R.id.action_adminEditRoomFragment_to_adminRoomFragment)
+            }
+        }
+        registerJobFinish()
+    }
+
+    fun deleteRoom(id : String) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val data = roomRespository.deleteRoom(id)
+            if(data.status == "success"){
+                navigateToPage(R.id.action_adminEditRoomFragment_to_adminRoomFragment)
             }
         }
         registerJobFinish()

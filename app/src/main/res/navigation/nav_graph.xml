@@ -400,6 +400,29 @@
             app:enterAnim="@android:anim/fade_in"
             app:popEnterAnim="@android:anim/fade_in" />
 
+        <action
+            android:id="@+id/action_adminRoomFragment_to_adminEditRoomFragment"
+            app:destination="@id/adminEditRoomFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/adminEditRoomFragment"
+        android:name="com.app.mobile_ecommerece.ui.Admin.ui.FragmentAdminEditRoom"
+        android:label="Admin Edit Room"
+        tools:layout="@layout/fragment_room_admin" >
+        <action
+            android:id="@+id/action_adminEditRoomFragment_to_adminRoomFragment"
+            app:destination="@id/adminRoomFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+        <argument
+            android:name="roomModel"
+            app:argType="com.app.mobile_ecommerece.model.RoomModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
     <fragment
