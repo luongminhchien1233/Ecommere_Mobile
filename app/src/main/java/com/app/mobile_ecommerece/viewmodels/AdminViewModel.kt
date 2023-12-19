@@ -5,16 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseViewModel
-import com.app.mobile_ecommerece.data.repository.CategoryRepository
-import com.app.mobile_ecommerece.data.repository.OrderRespository
-import com.app.mobile_ecommerece.data.repository.RoomRespository
-import com.app.mobile_ecommerece.data.repository.UserRepository
+import com.app.mobile_ecommerece.data.repository.*
 import com.app.mobile_ecommerece.model.CategoryModel
 import com.app.mobile_ecommerece.model.OrderData
-import com.app.mobile_ecommerece.model.Request.AddressRequest
-import com.app.mobile_ecommerece.model.Request.CreateCategoryRequest
-import com.app.mobile_ecommerece.model.Request.CreateRoomRequest
-import com.app.mobile_ecommerece.model.Request.OrderRequest
+import com.app.mobile_ecommerece.model.Request.*
 import com.app.mobile_ecommerece.model.RoomModel
 import com.app.mobile_ecommerece.model.UserAdminDataJson
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,7 +20,8 @@ class AdminViewModel @Inject constructor(
     private val categoryRespository: CategoryRepository,
     private val roomRespository: RoomRespository,
     private val userRespository: UserRepository,
-    private val orderRespository: OrderRespository
+    private val orderRespository: OrderRespository,
+    private val tokenRespository: TokenRepository
 ) : BaseViewModel() {
 
     private var _categoriesData = MutableLiveData<List<CategoryModel>>()
@@ -40,6 +35,29 @@ class AdminViewModel @Inject constructor(
 
     private var _ordersData = MutableLiveData<List<OrderData>>()
     val ordersData: LiveData<List<OrderData>> = _ordersData
+    fun isAdmin(): Boolean? {
+        if(tokenRespository.getRole() == "admin"){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+
+    fun getRole(): String {
+        return tokenRespository.getRole().toString()
+    }
+
+    fun updateRole(role: UpdateRoleRequest, id: String) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val data = userRespository.updateRole(role, id)
+            if(data.status == "success"){
+                navigateToPage(R.id.action_adminUserInfoFragment_to_adminUserFragment)
+            }
+        }
+        registerJobFinish()
+    }
     fun getALlCategories() {
         showLoading(true)
         parentJob = viewModelScope.launch(handler) {

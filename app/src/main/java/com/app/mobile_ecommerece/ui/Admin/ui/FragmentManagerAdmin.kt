@@ -16,10 +16,12 @@ import com.app.mobile_ecommerece.ui.AddressListFragmentDirections
 import com.app.mobile_ecommerece.ui.ProfileFragmentDirections
 import com.app.mobile_ecommerece.ui.adapter.AddressAdapter
 import com.app.mobile_ecommerece.viewmodels.AddressViewModel
+import com.app.mobile_ecommerece.viewmodels.AdminViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FragmentManagerAdmin : BaseFragment<FragmentManagerAdminBinding>(true) {
+    private val adminViewModel: AdminViewModel by activityViewModels()
     override fun inflateBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -52,6 +54,10 @@ class FragmentManagerAdmin : BaseFragment<FragmentManagerAdminBinding>(true) {
             val action: NavDirections = FragmentManagerAdminDirections.actionAdminManagerFragmentToAdminOrderFragment()
             navigateAction(action)
         }
+        binding.LayoutUsers.setOnClickListener {
+            val action: NavDirections = FragmentManagerAdminDirections.actionAdminManagerFragmentToAdminUserFragment()
+            navigateAction(action)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,6 +66,16 @@ class FragmentManagerAdmin : BaseFragment<FragmentManagerAdminBinding>(true) {
         observerEvent()
         setUpNavigate()
         setupRecycleViewLayout()
+        if(adminViewModel.getRole() != "admin"){
+            binding.LayoutRoom.visibility = View.GONE
+            binding.LayoutCategory.visibility = View.GONE
+            binding.LayoutProducts.visibility = View.GONE
+        }
+        else{
+            binding.LayoutRoom.visibility = View.VISIBLE
+            binding.LayoutCategory.visibility = View.VISIBLE
+            binding.LayoutProducts.visibility = View.VISIBLE
+        }
         val controller = findNavController()
     }
 }

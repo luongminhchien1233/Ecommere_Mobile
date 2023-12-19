@@ -1,14 +1,10 @@
 package com.app.mobile_ecommerece.data.api
 
+import androidx.room.Update
 import com.app.mobile_ecommerece.model.*
-import com.app.mobile_ecommerece.model.Request.LoginRequest
-import com.app.mobile_ecommerece.model.Request.ProfileRequest
-import com.app.mobile_ecommerece.model.Request.SignupRequest
+import com.app.mobile_ecommerece.model.Request.*
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 interface UserApi {
     @POST(ConstantsURL.LOGIN_URL)
@@ -25,4 +21,7 @@ interface UserApi {
 
     @GET(ConstantsURL.GET_ALL_USER)
     suspend fun getAllUser(): Response<CustomResponse<List<UserAdminDataJson>>>
+
+    @PUT(ConstantsURL.UPDATE_ROLE_URL)
+    suspend fun updateRole(@Body role: UpdateRoleRequest, @Path("id") id: String): Response<CustomResponse<UserAdminDataJson>>
 }

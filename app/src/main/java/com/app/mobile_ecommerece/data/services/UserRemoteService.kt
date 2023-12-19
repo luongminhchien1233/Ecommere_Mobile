@@ -4,9 +4,7 @@ import com.app.mobile_ecommerece.base.network.BaseRemoteService
 import com.app.mobile_ecommerece.data.api.NetWorkResult
 import com.app.mobile_ecommerece.data.api.UserApi
 import com.app.mobile_ecommerece.model.*
-import com.app.mobile_ecommerece.model.Request.LoginRequest
-import com.app.mobile_ecommerece.model.Request.ProfileRequest
-import com.app.mobile_ecommerece.model.Request.SignupRequest
+import com.app.mobile_ecommerece.model.Request.*
 import javax.inject.Inject
 
 class UserRemoteService @Inject constructor(private val userApi: UserApi) : BaseRemoteService() {
@@ -24,4 +22,7 @@ class UserRemoteService @Inject constructor(private val userApi: UserApi) : Base
 
     suspend fun getAllUser(): NetWorkResult<CustomResponse<List<UserAdminDataJson>>> =
         handleApi { userApi.getAllUser() }
+
+    suspend fun updateRoleAdmin(role: UpdateRoleRequest, id : String): NetWorkResult<CustomResponse<UserAdminDataJson>> =
+        handleApi { userApi.updateRole(role, id) }
 }

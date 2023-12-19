@@ -8,6 +8,8 @@ object ConstantsURL {
     const val REGISTER_URL = "user/register"
     const val PROFILE_URL = "user/info-user"
     const val PROFILE_UPDATE_URL = "user/update-user"
+    const val GET_ALL_USER = "user/all-users"
+    const val UPDATE_ROLE_URL = "user/admin/update/{id}"
     const val CATEGORY_URL = "category/all"
     const val CATEGORY_ADD_URL = "category/create-cate"
     const val CATEGORY_EDIT_URL = "category/{id}"
@@ -32,5 +34,4 @@ object ConstantsURL {
     const val ORDER_GET_URL = "order/myOrder"
     const val ORDER_DETAILS_URL = "order/detail/{id}"
     const val ORDER_UPDATE_ADMIN_URL = "order/admin/{id}"
-    const val GET_ALL_USER = "/user/all-users"
 }

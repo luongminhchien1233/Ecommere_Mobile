@@ -49,6 +49,10 @@ class UserViewModel @Inject constructor(
         }
     }
 
+    fun getRole(): String{
+        return tokenRepository.getRole().toString()
+    }
+
     fun logout() {
         tokenRepository.removeToken()
     }

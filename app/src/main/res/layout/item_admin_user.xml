@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="order"
-            type="com.app.mobile_ecommerece.model.OrderData" />
+            name="userData"
+            type="com.app.mobile_ecommerece.model.UserAdminDataJson" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,16 +43,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_bold"
-                    android:text="Role:"
+                    android:text="Username: "
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/tvRole"
+                    android:id="@+id/tvusername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Admin"
+                    android:text="@{userData.username}"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text=""
+                    android:text="@{userData.phoneNumber}"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Lộc"
+                    android:text="@{userData.lastname}"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -152,7 +152,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Bùi Bá"
+                    android:text="@{userData.firstname}"
                     android:textColor="@color/black"
                     />
 <!-- app:dayValue=""-->

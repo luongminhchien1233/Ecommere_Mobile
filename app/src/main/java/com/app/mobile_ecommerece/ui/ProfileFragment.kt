@@ -57,7 +57,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(false) {
         }
         binding.LayoutAdmin.setOnClickListener {
             if(userViewModel.checkIsLogin()){
-                if(userViewModel.isAdmin() == true) {
+                if(userViewModel.getRole() == "admin" || userViewModel.getRole() == "staff"){
                     val action: NavDirections = ProfileFragmentDirections.actionProfileFragmentToAdminManagerFragment()
                     navigateAction(action)
                 }
@@ -71,7 +71,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(false) {
         observerEvent()
         setUpNavigate()
         if(userViewModel.checkIsLogin()){
-            if(userViewModel.isAdmin() == true){
+            if(userViewModel.getRole() == "admin" || userViewModel.getRole() == "staff"){
                 binding.LayoutAdmin.visibility = View.VISIBLE
             }
             else{

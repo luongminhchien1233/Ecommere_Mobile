@@ -347,6 +347,51 @@
             app:enterAnim="@android:anim/fade_in"
             app:popEnterAnim="@android:anim/fade_in" />
 
+        <action
+            android:id="@+id/action_adminManagerFragment_to_adminUserFragment"
+            app:destination="@id/adminUserFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/adminUserFragment"
+        android:name="com.app.mobile_ecommerece.ui.Admin.ui.FragmentAdminUser"
+        android:label="Admin User"
+        tools:layout="@layout/fragment_users_admin" >
+
+        <action
+            android:id="@+id/action_adminUserFragment_to_adminManagerFragment"
+            app:destination="@id/adminManagerFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
+        <action
+            android:id="@+id/action_adminUserFragment_to_adminUserInfoFragment"
+            app:destination="@id/adminUserInfoFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/adminUserInfoFragment"
+        android:name="com.app.mobile_ecommerece.ui.Admin.ui.FragmentAdminUserInfo"
+        android:label="Admin Info User"
+        tools:layout="@layout/fragment_userinfo_admin" >
+
+        <action
+            android:id="@+id/action_adminUserInfoFragment_to_adminUserFragment"
+            app:destination="@id/adminUserFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+        <argument
+            android:name="userModel"
+            app:argType="com.app.mobile_ecommerece.model.UserAdminDataJson"
+            app:nullable="true"
+            android:defaultValue="@null" />
+
     </fragment>
 
     <fragment
