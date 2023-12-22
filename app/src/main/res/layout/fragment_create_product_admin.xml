@@ -3,6 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <variable
+            name="adminViewModel"
+            type="com.app.mobile_ecommerece.viewmodels.AdminViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <ScrollView

@@ -373,6 +373,26 @@
             app:enterAnim="@android:anim/fade_in"
             app:popEnterAnim="@android:anim/fade_in" />
 
+        <action
+            android:id="@+id/action_adminProductFragment_to_adminCreateProductFragment"
+            app:destination="@id/adminCreateProductFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/adminCreateProductFragment"
+        android:name="com.app.mobile_ecommerece.ui.Admin.ui.FragmentAdminCreateProduct"
+        android:label="Admin Create Product"
+        tools:layout="@layout/fragment_create_product_admin" >
+
+        <action
+            android:id="@+id/action_adminCreateProductFragment_to_adminProductFragment"
+            app:destination="@id/adminProductFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
     </fragment>
 
     <fragment

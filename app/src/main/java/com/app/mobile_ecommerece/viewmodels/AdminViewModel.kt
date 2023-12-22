@@ -10,6 +10,8 @@ import com.app.mobile_ecommerece.model.*
 import com.app.mobile_ecommerece.model.Request.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 @HiltViewModel
@@ -96,6 +98,15 @@ class AdminViewModel @Inject constructor(
         registerJobFinish()
     }
 
+    fun getCategoryByRoom(id: String) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val fetchedCategories = roomRespository.getCategoryByRoom(id)
+            _categoriesData.postValue(fetchedCategories)
+        }
+        registerJobFinish()
+    }
+
     fun getALlOrder() {
         showLoading(true)
         parentJob = viewModelScope.launch(handler) {
@@ -175,6 +186,25 @@ class AdminViewModel @Inject constructor(
             if(data.status == "success"){
                 navigateToPage(R.id.action_adminEditRoomFragment_to_adminRoomFragment)
             }
+        }
+        registerJobFinish()
+    }
+
+    fun createProduct(
+        images: List<MultipartBody.Part>,
+        code: RequestBody,
+        name: RequestBody,
+        description: RequestBody,
+        shortDescription: RequestBody,
+        category: RequestBody,
+        room: RequestBody,
+        specs: RequestBody,
+        price: Int,
+        quantity: Int
+    ) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val data = productRespository.createProduct(images, code, name, description, shortDescription, category, room, specs, price, quantity)
         }
         registerJobFinish()
     }

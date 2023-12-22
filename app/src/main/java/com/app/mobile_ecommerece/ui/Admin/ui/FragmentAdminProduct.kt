@@ -50,6 +50,10 @@ class FragmentAdminProduct: BaseFragment<FragmentProductAdminBinding>(true) {
             val action: NavDirections = FragmentAdminProductDirections.actionAdminProductFragmentToAdminManagerFragment()
             navigateAction(action)
         }
+        binding.btnCreateProdcut.setOnClickListener {
+            val action: NavDirections = FragmentAdminProductDirections.actionAdminProductFragmentToAdminCreateProductFragment()
+            navigateAction(action)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -6,6 +6,8 @@ import com.app.mobile_ecommerece.data.services.ProductRemoteService
 import com.app.mobile_ecommerece.data.services.UserRemoteService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 class ProductRespository @Inject constructor(private val productRemoteService: ProductRemoteService){
@@ -59,6 +61,34 @@ class ProductRespository @Inject constructor(private val productRemoteService: P
             is NetWorkResult.Success -> {
                 val data = result.data.data
                 if (data == null)
+                    throw NetworkErrorException("Product Empty")
+                else
+                    data
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
+
+    suspend fun createProduct(
+        images: List<MultipartBody.Part>,
+        code: RequestBody,
+        name: RequestBody,
+        description: RequestBody,
+        shortDescription: RequestBody,
+        category: RequestBody,
+        room: RequestBody,
+        specs: RequestBody,
+        price: Int,
+        quantity: Int
+    ) = withContext(Dispatchers.IO) {
+        when (val result = productRemoteService.createProduct(images, code, name, description, shortDescription, category
+        , room, specs, price, quantity
+        )) {
+            is NetWorkResult.Success -> {
+                val data = result.data
+                if (data.status != "success")
                     throw NetworkErrorException("Product Empty")
                 else
                     data

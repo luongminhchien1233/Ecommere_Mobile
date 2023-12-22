@@ -4,9 +4,10 @@ import com.app.mobile_ecommerece.model.CustomResponse
 import com.app.mobile_ecommerece.model.ProductAdminModel
 import com.app.mobile_ecommerece.model.ProductData
 import com.app.mobile_ecommerece.model.ProductModel
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ProductApi {
     @GET(ConstantsURL.PRODUCT_URL)
@@ -20,4 +21,19 @@ interface ProductApi {
 
     @GET(ConstantsURL.PRODUCT_ADMIN_URL)
     suspend fun getAllByAdmin(): Response<CustomResponse<List<ProductAdminModel>>>
+
+    @Multipart
+    @POST(ConstantsURL.PRODUCT_CREATE_URL)
+    suspend fun createProduct(
+        @Part images: List<MultipartBody.Part>,
+        @Part("code") code: RequestBody,
+        @Part("name") name: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("shortDescription") shortDescription: RequestBody,
+        @Part("category") category: RequestBody,
+        @Part("room") room: RequestBody,
+        @Part("specs") specs: RequestBody,
+        @Part("price") price: Int,
+        @Part("quantity") quantity: Int,
+    ): Response<CustomResponse<ProductModel>>
 }

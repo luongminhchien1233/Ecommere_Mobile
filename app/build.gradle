@@ -6,6 +6,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.dagger.hilt.android'
+    id 'kotlinx-serialization'
 }
 
 android {
@@ -123,4 +124,5 @@ dependencies {
     //Image Slider
     implementation 'me.relex:circleindicator:2.1.6'
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 }
