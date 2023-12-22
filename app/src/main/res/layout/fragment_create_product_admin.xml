@@ -15,31 +15,104 @@
             android:layout_height="match_parent"
             android:background="#f9f9fa">
 
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/icon_arrow"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Create Product"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageButton2"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/LayoutEdit1"
                 android:layout_width="match_parent"
-                android:layout_height="1000dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
                 android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6"
                 tools:background="@drawable/custom_layout_address_order">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Layout12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:paddingBottom="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Layout11">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/img3"
+                        android:layout_width="200dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/sofa4"
+                        android:scaleType="fitXY"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img2"
+                        app:shapeAppearanceOverlay="@style/avatarPersonalDetails" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/img2"
+                        android:layout_width="200dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/sofa4"
+                        android:scaleType="fitXY"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img1"
+                        app:shapeAppearanceOverlay="@style/avatarPersonalDetails" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/img1"
+                        android:layout_width="200dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/sofa4"
+                        android:scaleType="fitXY"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvImages"
+                        app:shapeAppearanceOverlay="@style/avatarPersonalDetails" />
+
+                    <TextView
+                        android:id="@+id/tvImages"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Images"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Layout10"
@@ -67,6 +140,125 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Enable"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Layout11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:paddingBottom="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Layout10">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+
+                        <TextView
+                            android:id="@+id/tvCollection"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Collection:"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/etCollection"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:fontFamily="@font/poppins_medium"
+                            android:inputType="number"
+                            android:paddingTop="10dp"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSpecs">
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Dimensions:"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/etDimensions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:fontFamily="@font/poppins_medium"
+                            android:inputType="number"
+                            android:paddingTop="10dp"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+
+                        <TextView
+                            android:id="@+id/tvMaterials"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Materials:"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/etMaterials"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:fontFamily="@font/poppins_medium"
+                            android:inputType="number"
+                            android:paddingTop="10dp"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvSpecs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Specs"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -462,8 +654,9 @@
                     android:id="@+id/btnEditSave"
                     android:layout_width="85dp"
                     android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/custom_btn_primary"
                     android:fontFamily="@font/poppins_bold"
                     android:text="Save"
@@ -471,7 +664,8 @@
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Layout12" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
