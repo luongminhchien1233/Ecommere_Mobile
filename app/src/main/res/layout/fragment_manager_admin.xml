@@ -23,6 +23,43 @@
             android:background="@color/bg_admin">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/LayoutStatistical"
+                android:layout_width="160dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/custom_layout_address_order"
+                android:elevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/LayoutRoom"
+                app:layout_constraintTop_toBottomOf="@+id/LayoutCategory">
+
+                <ImageView
+                    android:id="@+id/imageViewStatistical"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/icon_statistics" />
+
+                <TextView
+                    android:id="@+id/tvStatistical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Statistical"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewStatistical" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/LayoutRoom"
                 android:layout_width="160dp"
                 android:layout_height="150dp"
@@ -34,7 +71,7 @@
                 android:elevation="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/LayoutOrders">
+                app:layout_constraintTop_toBottomOf="@+id/LayoutProducts">
 
                 <ImageView
                     android:id="@+id/imageViewRoom"
@@ -105,7 +142,7 @@
                 android:background="@drawable/custom_layout_address_order"
                 android:elevation="5dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/LayoutProducts">
+                app:layout_constraintTop_toBottomOf="@+id/tvManager">
 
                 <ImageView
                     android:id="@+id/imageViewOrders"
@@ -139,7 +176,7 @@
                 android:background="@drawable/custom_layout_address_order"
                 android:elevation="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/LayoutProducts"
+                app:layout_constraintStart_toEndOf="@+id/LayoutOrders"
                 app:layout_constraintTop_toBottomOf="@+id/tvManager">
 
                 <ImageView
@@ -171,11 +208,12 @@
                 android:layout_width="160dp"
                 android:layout_height="150dp"
                 android:layout_marginStart="25dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_layout_address_order"
                 android:elevation="5dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvManager">
+                app:layout_constraintTop_toBottomOf="@+id/LayoutOrders">
 
                 <ImageView
                     android:id="@+id/imageViewProducts"
