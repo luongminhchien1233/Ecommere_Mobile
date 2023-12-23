@@ -10,16 +10,17 @@ import com.app.mobile_ecommerece.databinding.ItemCategoryBinding
 import com.app.mobile_ecommerece.databinding.ItemOrderBinding
 import com.app.mobile_ecommerece.model.CategoryModel
 import com.app.mobile_ecommerece.model.OrderData
+import com.app.mobile_ecommerece.model.OrderUserData
 import com.squareup.picasso.Picasso
 
 class OrderAdapter(
     private val context: Context,
-    private val onClick : (OrderData) -> Unit
-) : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>(), BindableAdapter<OrderData> {
+    private val onClick : (OrderUserData) -> Unit
+) : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>(), BindableAdapter<OrderUserData> {
 
-    private var orderList: List<OrderData> = listOf()
+    private var orderList: List<OrderUserData> = listOf()
     inner class OrderViewHolder(private val binding: ItemOrderBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindData(orderModel: OrderData) {
+        fun bindData(orderModel: OrderUserData) {
             binding.order = orderModel
             binding.btnViewDetailOrder.setOnClickListener { onClick(orderModel) }
         }
@@ -40,7 +41,7 @@ class OrderAdapter(
         }
     }
 
-    override fun setItems(items: List<OrderData>) {
+    override fun setItems(items: List<OrderUserData>) {
         orderList = items
         Log.d("SetItem icon adapter ", "")
         notifyDataSetChanged()

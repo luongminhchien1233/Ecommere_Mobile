@@ -23,8 +23,8 @@ class OrderViewModel @Inject constructor(
     private val userRespository: UserRepository,
     private val addressRespository: AddressRespository
 ) : BaseViewModel() {
-    private var _orderData = MutableLiveData<List<OrderData>>()
-    val orderData: LiveData<List<OrderData>> = _orderData
+    private var _orderData = MutableLiveData<List<OrderUserData>>()
+    val orderData: LiveData<List<OrderUserData>> = _orderData
 
     private var _activeOrderData = MutableLiveData<OrderData>()
     val activeOrderData: LiveData<OrderData> = _activeOrderData

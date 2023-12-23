@@ -26,7 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FragmentOrderDetailAdmin : BaseFragment<FragmentOrderDetailAdminBinding>(true) {
     private val adminViewModel: AdminViewModel by activityViewModels()
-    private val args by navArgs<OrderDetailFragmentArgs>()
+    private val args by navArgs<FragmentOrderDetailAdminArgs>()
     private val productOrderAdapter: ProductOrderAdapter by lazy{
         ProductOrderAdapter(requireContext(), onItemClick)
     }

@@ -13,6 +13,7 @@ import com.app.mobile_ecommerece.databinding.FragmentAddressListBinding
 import com.app.mobile_ecommerece.databinding.FragmentMyOrderBinding
 import com.app.mobile_ecommerece.model.AddressModel
 import com.app.mobile_ecommerece.model.OrderData
+import com.app.mobile_ecommerece.model.OrderUserData
 import com.app.mobile_ecommerece.ui.adapter.AddressAdapter
 import com.app.mobile_ecommerece.ui.adapter.OrderAdapter
 import com.app.mobile_ecommerece.viewmodels.AddressViewModel
@@ -60,7 +61,7 @@ class OrderListFragment : BaseFragment<FragmentMyOrderBinding>(true) {
         val controller = findNavController()
     }
 
-    private val onItemClick: (OrderData) -> Unit = {
+    private val onItemClick: (OrderUserData) -> Unit = {
         val action: NavDirections = OrderListFragmentDirections.actionOrderListFragmentToOrderDetailFragment(it)
         navigateAction(action)
     }

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="order"
-            type="com.app.mobile_ecommerece.model.OrderData" />
+            type="com.app.mobile_ecommerece.model.OrderUserData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

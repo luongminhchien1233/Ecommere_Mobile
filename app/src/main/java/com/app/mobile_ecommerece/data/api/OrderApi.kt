@@ -12,7 +12,7 @@ interface OrderApi {
     suspend fun createOrder(@Body orderRequest: CreateOrderRequest): Response<SimpleRespone>
 
     @GET(ConstantsURL.ORDER_GET_URL)
-    suspend fun getUserOrder(): Response<CustomResponse<List<OrderData>>>
+    suspend fun getUserOrder(): Response<CustomResponse<List<OrderUserData>>>
 
     @GET(ConstantsURL.ORDER_GETALL_URL)
     suspend fun getAllUserOrder(): Response<CustomResponse<List<OrderData>>>
