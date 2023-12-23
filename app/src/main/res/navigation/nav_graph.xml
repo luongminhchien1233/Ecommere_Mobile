@@ -68,6 +68,12 @@
         <action
             android:id="@+id/action_storeFragment_to_chooseRoomFragment"
             app:destination="@id/chooseRoomFragment" />
+
+        <action
+            android:id="@+id/action_storeFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
         <argument
             android:name="roomId"
             app:argType="string"

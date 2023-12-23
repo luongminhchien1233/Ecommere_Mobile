@@ -77,8 +77,8 @@ class StoreFragment : BaseFragment<FragmentStoreBinding>(false) {
     }
 
     private val onProductItemClick: (ProductModel) -> Unit = {
-//        val action: NavDirections = HomeFragmentDirections.actionHomeFragmentToProductDetailsFragment(it)
-//        navigateAction(action)
+        val action: NavDirections = StoreFragmentDirections.actionStoreFragmentToProductDetailFragment(it)
+        navigateAction(action)
     }
 
     private val onCateIconClick: (CategoryModel) -> Unit = {

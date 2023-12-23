@@ -79,10 +79,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(false) {
 //            homeViewModel.fetchData()
 //        }
 
-        binding.btnLogOut.setOnClickListener {
-            homeViewModel.logout()
-            navigateToPage(R.id.action_homeFragment_to_loginFragment);
-        }
+//        binding.btnLogOut.setOnClickListener {
+//            homeViewModel.logout()
+//            navigateToPage(R.id.action_homeFragment_to_loginFragment);
+//        }
 
         binding.tvViewAllNew.setOnClickListener {
             val action: NavDirections = HomeFragmentDirections.actionHomeFragmentToStoreFragment("")
