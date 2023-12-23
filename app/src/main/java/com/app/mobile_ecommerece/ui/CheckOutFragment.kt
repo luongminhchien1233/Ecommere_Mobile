@@ -82,7 +82,8 @@ class CheckOutFragment : BaseFragment<FragmentPlaceOrderBinding>(true) {
             orderViewModel.getProfile()
         }
         orderViewModel.totalPriceData.observe(viewLifecycleOwner) { value ->
-            binding.tvTotalPricePlaceOrder.text = value.toString()
+            val formattedNumber = String.format("%,d", value)
+            binding.tvTotalPricePlaceOrder.text = formattedNumber + "₫"
         }
         orderViewModel.userInfoLiveData.observe(viewLifecycleOwner) { value ->
             userData = value

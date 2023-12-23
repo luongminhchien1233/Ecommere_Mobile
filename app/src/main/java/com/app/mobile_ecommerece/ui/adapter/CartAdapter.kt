@@ -22,7 +22,8 @@ class CartAdapter(
         fun bindData(cartModel: CartModel) {
             binding.cartItem = cartModel
             Picasso.get().load(cartModel.product.images[0].url).into(binding.shapeableImageView)
-            binding.tvPricePopular.text = cartModel.totalPriceItem.toString()
+            val formattedNumber = String.format("%,d", cartModel.totalPriceItem)
+            binding.tvPricePopular.text = formattedNumber + "₫"
             binding.tvQuantity.text = cartModel.quantity.toString()
             binding.btnPlusQuantity.setOnClickListener { onPlusClick(cartModel) }
             binding.btnMinusQuantity.setOnClickListener { onMinusClick(cartModel) }

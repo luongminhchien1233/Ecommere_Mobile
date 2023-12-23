@@ -20,7 +20,8 @@ class ProductAdapter(
         fun bindData(productModel: ProductModel) {
             binding.product = productModel
             Picasso.get().load(productModel.images[0].url).into(binding.imgItemList)
-            binding.tvPriceItemList.text = productModel.price.toString()
+            val formattedNumber = String.format("%,d", productModel.priceSale)
+            binding.tvPriceItemList.text = formattedNumber + "₫"
             binding.LayoutItem.setOnClickListener { onClick(productModel) }
         }
     }

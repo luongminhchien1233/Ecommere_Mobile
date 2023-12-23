@@ -40,7 +40,11 @@ class ProductDetailFragment: BaseFragment<FragmentProductDetailBinding>(true) {
             binding.productData = args.productModel
         }
         setImageSlide()
-        binding.tvPrice.text = binding.productData!!.price.toString()
+//        binding.tvPrice.text = binding.productData!!.priceSale.toString() + "₫"
+        val formattedPrice = String.format("%,d", binding.productData!!.priceSale) + "₫"
+
+        binding.tvPrice.text = formattedPrice
+
         val controller = findNavController()
         binding.btnBack.setOnClickListener {
             navigateBack()
@@ -51,7 +55,9 @@ class ProductDetailFragment: BaseFragment<FragmentProductDetailBinding>(true) {
         binding.btnPlusQuantity.setOnClickListener{
             itemQty = itemQty + 1
             binding.tvQuantity.text = itemQty.toString()
-            binding.tvPrice.text = (binding.productData!!.price * itemQty).toString()
+            val formattedPrice = String.format("%,d", (binding.productData!!.priceSale * itemQty)) + "₫"
+            binding.tvPrice.text = formattedPrice
+//            binding.tvPrice.text = (binding.productData!!.priceSale * itemQty).toString() + "₫"
         }
 
         binding.btnMinusQuantity.setOnClickListener{
@@ -59,7 +65,9 @@ class ProductDetailFragment: BaseFragment<FragmentProductDetailBinding>(true) {
                 itemQty = itemQty - 1
             }
             binding.tvQuantity.text = itemQty.toString()
-            binding.tvPrice.text = (binding.productData!!.price * itemQty).toString()
+            val formattedPrice = String.format("%,d", (binding.productData!!.priceSale * itemQty)) + "₫"
+            binding.tvPrice.text = formattedPrice
+//            binding.tvPrice.text = (binding.productData!!.priceSale * itemQty).toString() + "₫"
         }
 
         binding.btnAddtoCart.setOnClickListener {

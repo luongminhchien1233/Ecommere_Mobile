@@ -93,7 +93,7 @@
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_medium"
                         android:gravity="center"
-                        app:numberValue="@{cartViewModel.cartData.cartTotal}"
+                        android:text="Total cart:"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -103,13 +103,18 @@
                         android:id="@+id/tvTotalPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_bold"
                         android:gravity="center"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toEndOf="@+id/tvTotalCart"
+                        app:layout_constraintTop_toTopOf="parent"
 
+                        app:text="@{String.format(`%,d %s`, cartViewModel.cartData.cartTotal, @string/currency)}" />
+<!--                    app:numberValue="@{cartViewModel.cartData.cartTotal}-->
                     <android.widget.Button
                         android:id="@+id/btnCheckout"
                         android:layout_width="match_parent"

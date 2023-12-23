@@ -23,6 +23,8 @@ class ProductOrderAdapter(
     inner class ProductOrderViewHolder(private val binding: ItemProductOrderBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindData(productModel: CartModel) {
             binding.product = productModel
+            val formattedNumber = String.format("%,d", productModel.totalPriceItem)
+            binding.tvPricePopular.text = formattedNumber + "₫"
             binding.tvQuantity2.text = productModel.quantity.toString()
             Picasso.get().load(productModel.product!!.images[0].url).into(binding.shapeableImageView)
         }
