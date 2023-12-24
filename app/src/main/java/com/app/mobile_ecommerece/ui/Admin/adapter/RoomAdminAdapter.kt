@@ -10,6 +10,7 @@ import com.app.mobile_ecommerece.databinding.ItemAdminCategoryBinding
 import com.app.mobile_ecommerece.databinding.ItemAdminRoomBinding
 import com.app.mobile_ecommerece.model.CategoryModel
 import com.app.mobile_ecommerece.model.RoomModel
+import com.squareup.picasso.Picasso
 
 class RoomAdminAdapter(
     private val context: Context,
@@ -21,6 +22,9 @@ class RoomAdminAdapter(
     inner class RoomViewHolder(private val binding: ItemAdminRoomBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindData(roomModel: RoomModel) {
             binding.tvNameItem.text = roomModel.nameRoom
+            if(roomModel.icUrl.isNotEmpty()) {
+                Picasso.get().load(roomModel.icUrl).into(binding.imgItemList)
+            }
             binding.LayoutItem.setOnClickListener { onClick(roomModel) }
         }
     }

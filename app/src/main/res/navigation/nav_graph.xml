@@ -254,6 +254,11 @@
             app:argType="com.app.mobile_ecommerece.model.OrderUserData"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_orderDetailFragment_to_orderListFragment"
+            app:destination="@id/orderListFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
     </fragment>
 
     <fragment

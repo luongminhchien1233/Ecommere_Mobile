@@ -24,4 +24,7 @@ class OrderRemoteService @Inject constructor(private val orderApi: OrderApi) : B
     suspend fun updateOrderAdmin(orderRequest: OrderRequest, id : String): NetWorkResult<SimpleRespone> =
         handleApi { orderApi.updateOrderStatus(orderRequest, id) }
 
+    suspend fun cancelOrder(orderRequest: OrderRequest, id : String): NetWorkResult<SimpleRespone> =
+        handleApi { orderApi.cancelOrder(orderRequest, id) }
+
 }

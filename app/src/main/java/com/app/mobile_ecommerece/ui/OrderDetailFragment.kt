@@ -26,6 +26,7 @@ class OrderDetailFragment : BaseFragment<FragmentMyOrderDetailsBinding>(true) {
     private val productOrderAdapter: ProductOrderAdapter by lazy{
         ProductOrderAdapter(requireContext(), onItemClick)
     }
+    var orderId = ""
     override fun inflateBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -59,8 +60,18 @@ class OrderDetailFragment : BaseFragment<FragmentMyOrderDetailsBinding>(true) {
         val controller = findNavController()
         if(args.orderItem != null){
             binding.orderData = args.orderItem
+            orderId = args.orderItem?._id.toString()
             binding.tvTotalOrder.text = args.orderItem?.total.toString()
             binding.tvshippingAddress.text = args.orderItem?.addressShipping?.ward + ", " + args.orderItem?.addressShipping?.district + ", " + args.orderItem?.addressShipping?.province
+            if(args.orderItem?.status != "Cancelled"){
+                binding.btnCancel.visibility = View.VISIBLE
+                binding.btnCancel.setOnClickListener {
+                    orderViewModel.cancelOrder(orderId)
+                }
+            }
+            else{
+                binding.btnCancel.visibility = View.GONE
+            }
         }
 
     }

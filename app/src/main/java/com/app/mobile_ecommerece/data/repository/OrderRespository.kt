@@ -66,4 +66,15 @@ class OrderRespository @Inject constructor(private val orderRemoteService: Order
         }
     }
 
+    suspend fun cancelOrder(orderRequest: OrderRequest, id: String) = withContext(Dispatchers.IO) {
+        when (val result = orderRemoteService.cancelOrder(orderRequest, id)) {
+            is NetWorkResult.Success -> {
+                result.data
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
+
 }

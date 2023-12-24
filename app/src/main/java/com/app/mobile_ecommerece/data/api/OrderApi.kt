@@ -20,4 +20,8 @@ interface OrderApi {
     @PUT(ConstantsURL.ORDER_UPDATE_ADMIN_URL)
     suspend fun updateOrderStatus(@Body orderRequest: OrderRequest, @Path("id") id: String): Response<SimpleRespone>
 
+    @PUT(ConstantsURL.ORDER_UPDATE_USER_URL)
+    suspend fun cancelOrder(@Body orderRequest: OrderRequest, @Path("id") id: String): Response<SimpleRespone>
+
+
 }

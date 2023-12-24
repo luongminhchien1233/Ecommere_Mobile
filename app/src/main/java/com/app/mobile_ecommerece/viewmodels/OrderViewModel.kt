@@ -12,6 +12,7 @@ import com.app.mobile_ecommerece.data.repository.UserRepository
 import com.app.mobile_ecommerece.model.*
 import com.app.mobile_ecommerece.model.Request.CartRequest
 import com.app.mobile_ecommerece.model.Request.CreateOrderRequest
+import com.app.mobile_ecommerece.model.Request.OrderRequest
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -92,6 +93,18 @@ class OrderViewModel @Inject constructor(
             val status = orderRespository.createOrder(orderRequest)
             if(status!!.status == "success"){
                 navigateToPage(R.id.action_checkoutFragment_to_orderSuccessFragment)
+            }
+        }
+        registerJobFinish()
+    }
+
+    fun cancelOrder(id: String) {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val status = OrderRequest("Cancelled")
+            val data = orderRespository.cancelOrder(status, id)
+            if(data.status == "success"){
+                navigateToPage(R.id.action_orderDetailFragment_to_orderListFragment)
             }
         }
         registerJobFinish()

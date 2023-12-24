@@ -16,6 +16,24 @@
             android:layout_height="wrap_content"
             android:background="@color/white">
 
+            <android.widget.Button
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/custom_btn_primary"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Cancel Order"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LayoutInfoAddress" />
+
             <TextView
                 android:id="@+id/tvDeliveryOrderDetail"
                 android:layout_width="wrap_content"
