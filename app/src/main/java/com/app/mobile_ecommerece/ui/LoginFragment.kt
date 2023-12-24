@@ -36,6 +36,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(true) {
             navigateToPage(R.id.action_loginFragment_to_signupFragment)
         }
 
+        binding.tvForgot.setOnClickListener {
+            navigateToPage(R.id.action_loginFragment_to_forgotPasswordFragment)
+        }
+
         binding.btnLogin.setOnClickListener {
             //Nếu email hoặc password rỗng thì thông báo
             if (binding.etEmailSignIn.text.toString().isEmpty() || binding.etPasswordSignIn.text.toString()

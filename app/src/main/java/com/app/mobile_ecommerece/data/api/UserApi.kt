@@ -22,6 +22,12 @@ interface UserApi {
     @PUT(ConstantsURL.CHANGE_PASSWORD_URL)
     suspend fun changePassword(@Body password: ChangePasswordRequest): Response<SimpleRespone>
 
+    @POST(ConstantsURL.GET_OTP_URL)
+    suspend fun sendOTP(@Body email: SendOtpRequest): Response<SimpleRespone>
+
+    @PUT(ConstantsURL.RESET_PASSWORD_URL)
+    suspend fun resetPassword(@Body reset: ResetPassRequest): Response<SimpleRespone>
+
     @GET(ConstantsURL.GET_ALL_USER)
     suspend fun getAllUser(): Response<CustomResponse<List<UserAdminDataJson>>>
 

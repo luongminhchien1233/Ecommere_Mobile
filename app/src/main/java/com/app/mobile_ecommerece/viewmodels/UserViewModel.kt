@@ -9,10 +9,7 @@ import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseViewModel
 import com.app.mobile_ecommerece.data.repository.TokenRepository
 import com.app.mobile_ecommerece.data.repository.UserRepository
-import com.app.mobile_ecommerece.model.Request.ChangePasswordRequest
-import com.app.mobile_ecommerece.model.Request.LoginRequest
-import com.app.mobile_ecommerece.model.Request.ProfileRequest
-import com.app.mobile_ecommerece.model.Request.SignupRequest
+import com.app.mobile_ecommerece.model.Request.*
 import com.app.mobile_ecommerece.model.TokenJson
 import com.app.mobile_ecommerece.model.UserJson
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -29,6 +26,9 @@ class UserViewModel @Inject constructor(
     val userLiveData: LiveData<TokenJson> = _userLiveData
     private var _userInfoLiveData = MutableLiveData<UserJson>()
     val userInfoLiveData: LiveData<UserJson> = _userInfoLiveData
+
+    private var _isResetSuccess = MutableLiveData<Boolean>()
+    val isResetSuccess: LiveData<Boolean> = _isResetSuccess
 
     fun login(loginRequest: LoginRequest, remember: Boolean) {
         showLoading(true)
@@ -107,4 +107,24 @@ class UserViewModel @Inject constructor(
         }
         registerJobFinish()
     }
+
+    fun sendOTP(email: String) {
+        parentJob = viewModelScope.launch(handler) {
+            val request = SendOtpRequest(email)
+            val data = userRepository.sendOTP(request)
+        }
+        registerJobFinish()
+    }
+
+    fun resetPassword(resetPassRequest: ResetPassRequest) {
+        _isResetSuccess.postValue(false)
+        parentJob = viewModelScope.launch(handler) {
+            val data = userRepository.resetPassword(resetPassRequest)
+            if(data.status == "success"){
+                _isResetSuccess.postValue(true)
+            }
+        }
+        registerJobFinish()
+    }
+
 }

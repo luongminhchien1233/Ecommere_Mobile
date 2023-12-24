@@ -39,4 +39,6 @@ object ConstantsURL {
     const val ORDER_UPDATE_USER_URL = "order/user/{id}"
     const val STATISTIC_URL = "statistical"
     const val CHANGE_PASSWORD_URL = "user/updatepass"
+    const val GET_OTP_URL = "user/forgot-password"
+    const val RESET_PASSWORD_URL = "user/reset-password"
 }

@@ -23,6 +23,12 @@ class UserRemoteService @Inject constructor(private val userApi: UserApi) : Base
     suspend fun changePassword(password: ChangePasswordRequest): NetWorkResult<SimpleRespone> =
         handleApi { userApi.changePassword(password) }
 
+    suspend fun sendOTP(request: SendOtpRequest): NetWorkResult<SimpleRespone> =
+        handleApi { userApi.sendOTP(request) }
+
+    suspend fun resetPassword(request: ResetPassRequest): NetWorkResult<SimpleRespone> =
+        handleApi { userApi.resetPassword(request) }
+
     suspend fun getAllUser(): NetWorkResult<CustomResponse<List<UserAdminDataJson>>> =
         handleApi { userApi.getAllUser() }
 

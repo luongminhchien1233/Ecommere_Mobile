@@ -75,6 +75,28 @@ class UserRepository @Inject constructor(private val userRemoteService: UserRemo
         }
     }
 
+    suspend fun sendOTP(request: SendOtpRequest) = withContext(Dispatchers.IO) {
+        when (val result = userRemoteService.sendOTP(request)) {
+            is NetWorkResult.Success -> {
+                result.data!!
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
+
+    suspend fun resetPassword(request: ResetPassRequest) = withContext(Dispatchers.IO) {
+        when (val result = userRemoteService.resetPassword(request)) {
+            is NetWorkResult.Success -> {
+                result.data!!
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
+
     suspend fun getAllUser() = withContext(Dispatchers.IO) {
         when (val result = userRemoteService.getAllUser()) {
             is NetWorkResult.Success -> {

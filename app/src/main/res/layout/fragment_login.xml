@@ -125,6 +125,19 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/cbRemember" />
 
+                    <TextView
+                        android:id="@+id/tvForgot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:clickable="true"
+                        android:fontFamily="@font/poppins_extralight"
+                        android:text="Forgot Password"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/cbRemember"
+                        app:layout_constraintTop_toBottomOf="@+id/LayoutEmail" />
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/LayoutEmail"
                         android:layout_width="match_parent"
