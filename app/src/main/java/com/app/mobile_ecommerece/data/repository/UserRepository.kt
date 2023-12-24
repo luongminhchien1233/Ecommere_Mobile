@@ -3,10 +3,7 @@ package com.app.mobile_ecommerece.data.repository
 import android.accounts.NetworkErrorException
 import com.app.mobile_ecommerece.data.api.NetWorkResult
 import com.app.mobile_ecommerece.data.services.UserRemoteService
-import com.app.mobile_ecommerece.model.Request.LoginRequest
-import com.app.mobile_ecommerece.model.Request.ProfileRequest
-import com.app.mobile_ecommerece.model.Request.SignupRequest
-import com.app.mobile_ecommerece.model.Request.UpdateRoleRequest
+import com.app.mobile_ecommerece.model.Request.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -60,6 +57,17 @@ class UserRepository @Inject constructor(private val userRemoteService: UserRemo
         when (val result = userRemoteService.updateProfile(profileRequest)) {
             is NetWorkResult.Success -> {
                 result.data.data!!;
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
+
+    suspend fun changePassword(password: ChangePasswordRequest) = withContext(Dispatchers.IO) {
+        when (val result = userRemoteService.changePassword(password)) {
+            is NetWorkResult.Success -> {
+                result.data!!
             }
             is NetWorkResult.Error -> {
                 throw result.exception

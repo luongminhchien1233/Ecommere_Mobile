@@ -1,5 +1,7 @@
 package com.app.mobile_ecommerece.viewmodels
 
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -7,12 +9,14 @@ import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseViewModel
 import com.app.mobile_ecommerece.data.repository.TokenRepository
 import com.app.mobile_ecommerece.data.repository.UserRepository
+import com.app.mobile_ecommerece.model.Request.ChangePasswordRequest
 import com.app.mobile_ecommerece.model.Request.LoginRequest
 import com.app.mobile_ecommerece.model.Request.ProfileRequest
 import com.app.mobile_ecommerece.model.Request.SignupRequest
 import com.app.mobile_ecommerece.model.TokenJson
 import com.app.mobile_ecommerece.model.UserJson
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.github.muddz.styleabletoast.StyleableToast
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -92,6 +96,14 @@ class UserViewModel @Inject constructor(
         parentJob = viewModelScope.launch(handler) {
             val profile = userRepository.updateProfile(profileRequest)
             _userInfoLiveData.postValue(profile)
+        }
+        registerJobFinish()
+    }
+
+    fun changePassword(password: String) {
+        parentJob = viewModelScope.launch(handler) {
+            val passRequest = ChangePasswordRequest(password)
+            val data = userRepository.changePassword(passRequest)
         }
         registerJobFinish()
     }

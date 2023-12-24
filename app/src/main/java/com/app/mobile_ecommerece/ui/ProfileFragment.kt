@@ -63,6 +63,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(false) {
                 }
             }
         }
+        binding.LayoutChangePassword.setOnClickListener {
+            if(userViewModel.checkIsLogin()){
+                val action: NavDirections = ProfileFragmentDirections.actionProfileFragmentToChangePasswordFragment()
+                navigateAction(action)
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -83,9 +89,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(false) {
                 val action: NavDirections = ProfileFragmentDirections.actionProfileFragmentToLoginFragment()
                 navigateAction(action)
             }
+            binding.LayoutChangePassword.visibility = View.VISIBLE
         }
         else{
             binding.LayoutAdmin.visibility = View.GONE
+            binding.LayoutChangePassword.visibility = View.GONE
             binding.btnLogoutProfile.text = "Login"
             binding.btnLogoutProfile.setOnClickListener {
                 val action: NavDirections = ProfileFragmentDirections.actionProfileFragmentToLoginFragment()

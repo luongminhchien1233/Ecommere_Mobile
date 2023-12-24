@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -13,6 +14,7 @@ import com.app.mobile_ecommerece.databinding.FragmentProductDetailBinding
 import com.app.mobile_ecommerece.model.Request.CartRequest
 import com.app.mobile_ecommerece.ui.adapter.ImageAdapter
 import com.app.mobile_ecommerece.viewmodels.ProductViewModel
+import io.github.muddz.styleabletoast.StyleableToast
 
 
 class ProductDetailFragment: BaseFragment<FragmentProductDetailBinding>(true) {
@@ -76,6 +78,7 @@ class ProductDetailFragment: BaseFragment<FragmentProductDetailBinding>(true) {
             else {
                 val cartRequest = CartRequest(binding.productData!!._id, binding.tvQuantity.text.toString().toInt())
                 prodcutViewModel.addtoCart(cartRequest)
+                StyleableToast.makeText(requireContext(), "Add to Cart Successfully", Toast.LENGTH_LONG, R.style.SuccessToast).show()
             }
         }
         binding.btnCart.setOnClickListener {
