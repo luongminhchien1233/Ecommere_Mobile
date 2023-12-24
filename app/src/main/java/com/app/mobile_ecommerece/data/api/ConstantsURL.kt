@@ -37,4 +37,5 @@ object ConstantsURL {
     const val ORDER_DETAILS_URL = "order/detail/{id}"
     const val ORDER_UPDATE_ADMIN_URL = "order/admin/{id}"
     const val ORDER_UPDATE_USER_URL = "order/user/{id}"
+    const val STATISTIC_URL = "statistical"
 }

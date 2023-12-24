@@ -45,6 +45,17 @@ class UserRepository @Inject constructor(private val userRemoteService: UserRemo
         }
     }
 
+    suspend fun adminGetStatistic() = withContext(Dispatchers.IO) {
+        when (val result = userRemoteService.adminGetStatistic()) {
+            is NetWorkResult.Success -> {
+                result.data.data!!
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
+
     suspend fun updateProfile(profileRequest: ProfileRequest) = withContext(Dispatchers.IO) {
         when (val result = userRemoteService.updateProfile(profileRequest)) {
             is NetWorkResult.Success -> {

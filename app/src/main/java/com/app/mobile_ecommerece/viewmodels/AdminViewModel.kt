@@ -38,6 +38,9 @@ class AdminViewModel @Inject constructor(
 
     private var _productsData = MutableLiveData<List<ProductAdminModel>>()
     val productsData: LiveData<List<ProductAdminModel>> = _productsData
+
+    private var _statisticData = MutableLiveData<StatisticModel>()
+    val statisticData: LiveData<StatisticModel> = _statisticData
     fun isAdmin(): Boolean? {
         if(tokenRespository.getRole() == "admin"){
             return true
@@ -85,6 +88,15 @@ class AdminViewModel @Inject constructor(
         parentJob = viewModelScope.launch(handler) {
             val fetchedRoom = roomRespository.getAllRooms()
             _roomsData.postValue(fetchedRoom)
+        }
+        registerJobFinish()
+    }
+
+    fun adminGetStatistic() {
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val data = userRespository.adminGetStatistic()
+            _statisticData.postValue(data)
         }
         registerJobFinish()
     }

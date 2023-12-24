@@ -22,6 +22,9 @@ interface UserApi {
     @GET(ConstantsURL.GET_ALL_USER)
     suspend fun getAllUser(): Response<CustomResponse<List<UserAdminDataJson>>>
 
+    @GET(ConstantsURL.STATISTIC_URL)
+    suspend fun adminGetStatistic(): Response<CustomResponse<StatisticModel>>
+
     @PUT(ConstantsURL.UPDATE_ROLE_URL)
     suspend fun updateRole(@Body role: UpdateRoleRequest, @Path("id") id: String): Response<CustomResponse<UserAdminDataJson>>
 }

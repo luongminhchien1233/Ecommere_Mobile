@@ -368,6 +368,26 @@
             app:enterAnim="@android:anim/fade_in"
             app:popEnterAnim="@android:anim/fade_in" />
 
+        <action
+            android:id="@+id/action_adminManagerFragment_to_adminStatisticFragment"
+            app:destination="@id/adminStatisticFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/adminStatisticFragment"
+        android:name="com.app.mobile_ecommerece.ui.Admin.ui.FragmentAdminStatistic"
+        android:label="Admin Statistic"
+        tools:layout="@layout/fragment_admin_statistic" >
+
+        <action
+            android:id="@+id/action_adminStatisticFragment_to_adminManagerFragment"
+            app:destination="@id/adminManagerFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
     </fragment>
 
     <fragment

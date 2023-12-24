@@ -62,6 +62,10 @@ class FragmentManagerAdmin : BaseFragment<FragmentManagerAdminBinding>(true) {
             val action: NavDirections = FragmentManagerAdminDirections.actionAdminManagerFragmentToAdminProductFragment()
             navigateAction(action)
         }
+        binding.LayoutStatistical.setOnClickListener {
+            val action: NavDirections = FragmentManagerAdminDirections.actionAdminManagerFragmentToAdminStatisticFragment()
+            navigateAction(action)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -74,11 +78,13 @@ class FragmentManagerAdmin : BaseFragment<FragmentManagerAdminBinding>(true) {
             binding.LayoutRoom.visibility = View.GONE
             binding.LayoutCategory.visibility = View.GONE
             binding.LayoutProducts.visibility = View.GONE
+            binding.LayoutStatistical.visibility = View.GONE
         }
         else{
             binding.LayoutRoom.visibility = View.VISIBLE
             binding.LayoutCategory.visibility = View.VISIBLE
             binding.LayoutProducts.visibility = View.VISIBLE
+            binding.LayoutStatistical.visibility = View.VISIBLE
         }
         val controller = findNavController()
     }
