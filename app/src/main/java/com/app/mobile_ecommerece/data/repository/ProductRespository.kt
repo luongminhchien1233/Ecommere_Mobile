@@ -4,6 +4,7 @@ import android.accounts.NetworkErrorException
 import com.app.mobile_ecommerece.data.api.NetWorkResult
 import com.app.mobile_ecommerece.data.services.ProductRemoteService
 import com.app.mobile_ecommerece.data.services.UserRemoteService
+import com.app.mobile_ecommerece.model.Request.ProductEnableRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.MultipartBody
@@ -49,6 +50,17 @@ class ProductRespository @Inject constructor(private val productRemoteService: P
                     throw NetworkErrorException("Product Empty")
                 else
                     data
+            }
+            is NetWorkResult.Error -> {
+                throw result.exception
+            }
+        }
+    }
+
+    suspend fun enableProduct(enableRequest: ProductEnableRequest, id: String) = withContext(Dispatchers.IO) {
+        when (val result = productRemoteService.enableProduct(enableRequest, id)) {
+            is NetWorkResult.Success -> {
+                result.data!!
             }
             is NetWorkResult.Error -> {
                 throw result.exception

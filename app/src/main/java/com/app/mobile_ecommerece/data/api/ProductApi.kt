@@ -1,9 +1,8 @@
 package com.app.mobile_ecommerece.data.api
 
-import com.app.mobile_ecommerece.model.CustomResponse
-import com.app.mobile_ecommerece.model.ProductAdminModel
-import com.app.mobile_ecommerece.model.ProductData
-import com.app.mobile_ecommerece.model.ProductModel
+import com.app.mobile_ecommerece.model.*
+import com.app.mobile_ecommerece.model.Request.CreateOrderRequest
+import com.app.mobile_ecommerece.model.Request.ProductEnableRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -21,6 +20,9 @@ interface ProductApi {
 
     @GET(ConstantsURL.PRODUCT_ADMIN_URL)
     suspend fun getAllByAdmin(): Response<CustomResponse<List<ProductAdminModel>>>
+
+    @PUT(ConstantsURL.PRODUCT_UPDATE_URL)
+    suspend fun enableProduct(@Body enableRequest: ProductEnableRequest, @Path("id") id: String): Response<SimpleRespone>
 
     @Multipart
     @POST(ConstantsURL.PRODUCT_CREATE_URL)

@@ -3,10 +3,9 @@ package com.app.mobile_ecommerece.data.services
 import com.app.mobile_ecommerece.base.network.BaseRemoteService
 import com.app.mobile_ecommerece.data.api.NetWorkResult
 import com.app.mobile_ecommerece.data.api.ProductApi
-import com.app.mobile_ecommerece.model.CustomResponse
-import com.app.mobile_ecommerece.model.ProductAdminModel
-import com.app.mobile_ecommerece.model.ProductData
-import com.app.mobile_ecommerece.model.ProductModel
+import com.app.mobile_ecommerece.model.*
+import com.app.mobile_ecommerece.model.Request.CreateOrderRequest
+import com.app.mobile_ecommerece.model.Request.ProductEnableRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import javax.inject.Inject
@@ -22,6 +21,9 @@ class ProductRemoteService @Inject constructor(private val productApi: ProductAp
 
     suspend fun getAllByAdmin(): NetWorkResult<CustomResponse<List<ProductAdminModel>>> =
         handleApi { productApi.getAllByAdmin() }
+
+    suspend fun enableProduct(enableRequest: ProductEnableRequest, id: String): NetWorkResult<SimpleRespone> =
+        handleApi { productApi.enableProduct(enableRequest, id) }
 
     suspend fun createProduct(
         images: List<MultipartBody.Part>,

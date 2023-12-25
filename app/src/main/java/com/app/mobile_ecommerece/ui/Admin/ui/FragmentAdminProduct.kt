@@ -5,26 +5,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.app.mobile_ecommerece.R
 import com.app.mobile_ecommerece.base.BaseFragment
 import com.app.mobile_ecommerece.databinding.FragmentOrderAdminBinding
 import com.app.mobile_ecommerece.databinding.FragmentProductAdminBinding
 import com.app.mobile_ecommerece.model.OrderData
 import com.app.mobile_ecommerece.model.ProductAdminModel
+import com.app.mobile_ecommerece.model.Request.ProductEnableRequest
 import com.app.mobile_ecommerece.ui.Admin.adapter.OrderAdminAdapter
 import com.app.mobile_ecommerece.ui.Admin.adapter.ProductAdminAdapter
 import com.app.mobile_ecommerece.viewmodels.AdminViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import io.github.muddz.styleabletoast.StyleableToast
 import java.util.*
 
 @AndroidEntryPoint
 class FragmentAdminProduct: BaseFragment<FragmentProductAdminBinding>(true) {
     private val adminViewModel: AdminViewModel by activityViewModels()
     private val productAdapter: ProductAdminAdapter by lazy{
-        ProductAdminAdapter(requireContext(), onItemClick)
+        ProductAdminAdapter(requireContext(), onItemClick, onEnable)
     }
     override fun inflateBinding(
         inflater: LayoutInflater,
@@ -75,11 +79,27 @@ class FragmentAdminProduct: BaseFragment<FragmentProductAdminBinding>(true) {
                 return false
             }
         })
+        adminViewModel.isEnableSuccess.observe(viewLifecycleOwner) { value ->
+            if(value == true){
+                StyleableToast.makeText(requireContext(), "Update Successfully!", Toast.LENGTH_LONG, R.style.SuccessToast).show()
+            }
+        }
         val controller = findNavController()
     }
 
     private val onItemClick: (ProductAdminModel) -> Unit = {
 
+    }
+
+    private val onEnable: (ProductAdminModel) -> Unit = {
+        if(it.enable == true){
+            val request = ProductEnableRequest(false)
+            adminViewModel.enableProduct(request, it._id)
+        }
+        else{
+            val request = ProductEnableRequest(true)
+            adminViewModel.enableProduct(request, it._id)
+        }
     }
 
     private fun filterList(newText: String) {

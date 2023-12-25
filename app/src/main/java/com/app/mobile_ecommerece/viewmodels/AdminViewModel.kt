@@ -41,6 +41,9 @@ class AdminViewModel @Inject constructor(
 
     private var _statisticData = MutableLiveData<StatisticModel>()
     val statisticData: LiveData<StatisticModel> = _statisticData
+
+    private var _isEnableSuccess = MutableLiveData<Boolean>()
+    val isEnableSuccess: LiveData<Boolean> = _isEnableSuccess
     fun isAdmin(): Boolean? {
         if(tokenRespository.getRole() == "admin"){
             return true
@@ -217,6 +220,18 @@ class AdminViewModel @Inject constructor(
         showLoading(true)
         parentJob = viewModelScope.launch(handler) {
             val data = productRespository.createProduct(images, code, name, description, shortDescription, category, room, specs, price, quantity)
+        }
+        registerJobFinish()
+    }
+
+    fun enableProduct(enableRequest: ProductEnableRequest, id: String) {
+        _isEnableSuccess.postValue(false)
+        parentJob = viewModelScope.launch(handler) {
+            val data = productRespository.enableProduct(enableRequest, id)
+            if(data.status == "success"){
+                getAllProducts()
+                _isEnableSuccess.postValue(true)
+            }
         }
         registerJobFinish()
     }

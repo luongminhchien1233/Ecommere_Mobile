@@ -18,6 +18,7 @@ object ConstantsURL {
     const val PRODUCT_CREATE_URL = "product/create-product"
     const val PRODUCT_BYCATE_URL = "product/category/{id}"
     const val PRODUCT_BYROOM_URL = "product/room/{id}"
+    const val PRODUCT_UPDATE_URL = "product/updateProduct/{id}"
     const val ROOM_URL = "room/all"
     const val ROOM_ADD_URL = "room/create-room"
     const val ROOM_EDIT_URL = "room/{id}"

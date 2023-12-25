@@ -14,7 +14,8 @@ import com.squareup.picasso.Picasso
 
 class ProductAdminAdapter(
     private val context: Context,
-    private val onClick : (ProductAdminModel) -> Unit
+    private val onClick : (ProductAdminModel) -> Unit,
+    private val onEnable: (ProductAdminModel) -> Unit
 ) : RecyclerView.Adapter<ProductAdminAdapter.ProductViewHolder>(), BindableAdapter<ProductAdminModel> {
 
     private var productsList: List<ProductAdminModel> = listOf()
@@ -33,6 +34,7 @@ class ProductAdminAdapter(
             Picasso.get().load(productModel.images[0].url).into(binding.imgItemList)
 
             binding.btnEdit.setOnClickListener { onClick(productModel) }
+            binding.btnEnable.setOnClickListener { onEnable(productModel) }
         }
     }
 
