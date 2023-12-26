@@ -13,6 +13,7 @@ import com.app.mobile_ecommerece.base.BaseFragment
 import com.app.mobile_ecommerece.databinding.FragmentProductDetailBinding
 import com.app.mobile_ecommerece.model.Request.CartRequest
 import com.app.mobile_ecommerece.ui.adapter.ImageAdapter
+import com.app.mobile_ecommerece.utils.Status
 import com.app.mobile_ecommerece.viewmodels.ProductViewModel
 import io.github.muddz.styleabletoast.StyleableToast
 
@@ -73,8 +74,10 @@ class ProductDetailFragment: BaseFragment<FragmentProductDetailBinding>(true) {
         }
 
         binding.btnAddtoCart.setOnClickListener {
-            if (!prodcutViewModel.checkIsLogin())
-                navigateToPage(R.id.action_productDetailFragment_to_loginFragment);
+            if (!prodcutViewModel.checkIsLogin()){
+//                navigateToPage(R.id.action_productDetailFragment_to_loginFragment)
+                showNotify("Notification", "Please login", status = Status.WARNING)
+            }
             else {
                 val cartRequest = CartRequest(binding.productData!!._id, binding.tvQuantity.text.toString().toInt())
                 prodcutViewModel.addtoCart(cartRequest)
