@@ -3,6 +3,7 @@ package com.app.mobile_ecommerece.data.api
 import com.app.mobile_ecommerece.model.*
 import com.app.mobile_ecommerece.model.Request.CreateOrderRequest
 import com.app.mobile_ecommerece.model.Request.ProductEnableRequest
+import com.app.mobile_ecommerece.model.Request.ProductUpdateRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -23,6 +24,9 @@ interface ProductApi {
 
     @PUT(ConstantsURL.PRODUCT_UPDATE_URL)
     suspend fun enableProduct(@Body enableRequest: ProductEnableRequest, @Path("id") id: String): Response<SimpleRespone>
+
+    @PUT(ConstantsURL.PRODUCT_UPDATE_URL)
+    suspend fun updateProduct(@Body updateRequest: ProductUpdateRequest, @Path("id") id: String): Response<SimpleRespone>
 
     @Multipart
     @POST(ConstantsURL.PRODUCT_CREATE_URL)

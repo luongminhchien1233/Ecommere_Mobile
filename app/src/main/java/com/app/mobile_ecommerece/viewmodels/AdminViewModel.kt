@@ -1,5 +1,6 @@
 package com.app.mobile_ecommerece.viewmodels
 
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -9,6 +10,7 @@ import com.app.mobile_ecommerece.data.repository.*
 import com.app.mobile_ecommerece.model.*
 import com.app.mobile_ecommerece.model.Request.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.github.muddz.styleabletoast.StyleableToast
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -44,6 +46,12 @@ class AdminViewModel @Inject constructor(
 
     private var _isEnableSuccess = MutableLiveData<Boolean>()
     val isEnableSuccess: LiveData<Boolean> = _isEnableSuccess
+
+    private var _isUpdateSuccess = MutableLiveData<Boolean>()
+    val isUpdateSuccess: LiveData<Boolean> = _isUpdateSuccess
+
+    private var _isUpdateFail = MutableLiveData<Boolean>()
+    val isUpdateFail: LiveData<Boolean> = _isUpdateFail
     fun isAdmin(): Boolean? {
         if(tokenRespository.getRole() == "admin"){
             return true
@@ -235,5 +243,36 @@ class AdminViewModel @Inject constructor(
         }
         registerJobFinish()
     }
+
+    fun updateProduct(updateRequest: ProductUpdateRequest, id: String) {
+        _isUpdateSuccess.postValue(false)
+        _isUpdateFail.postValue(false)
+        parentJob = viewModelScope.launch(handler) {
+            val data = productRespository.updateProduct(updateRequest, id)
+            if(data.status == "success"){
+                _isUpdateSuccess.postValue(true)
+            }
+            else{
+                _isUpdateFail.postValue(true)
+            }
+        }
+        registerJobFinish()
+    }
+
+    fun getInfoProduct(roomId: String){
+        showLoading(true)
+        parentJob = viewModelScope.launch(handler) {
+            val rooms = roomRespository.getAllRooms()
+            _roomsData.postValue(rooms)
+            for(item in rooms){
+                if(item._id == roomId){
+                    val category = roomRespository.getCategoryByRoom(item._id)
+                    _categoriesData.postValue(category)
+                }
+            }
+        }
+        registerJobFinish()
+    }
+
 }
 

@@ -442,6 +442,31 @@
             app:enterAnim="@android:anim/fade_in"
             app:popEnterAnim="@android:anim/fade_in" />
 
+        <action
+            android:id="@+id/action_adminProductFragment_to_adminEditProductFragment"
+            app:destination="@id/adminEditProductFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/adminEditProductFragment"
+        android:name="com.app.mobile_ecommerece.ui.Admin.ui.FragmentAdminEditProduct"
+        android:label="Admin Edit Product"
+        tools:layout="@layout/fragment_edit_product_admin" >
+
+        <action
+            android:id="@+id/action_adminEditProductFragment_to_adminProductFragment"
+            app:destination="@id/adminProductFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+        <argument
+            android:name="productModel"
+            app:argType="com.app.mobile_ecommerece.model.ProductAdminModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
+
     </fragment>
 
     <fragment

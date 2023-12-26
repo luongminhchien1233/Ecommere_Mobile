@@ -6,6 +6,7 @@ import com.app.mobile_ecommerece.data.api.ProductApi
 import com.app.mobile_ecommerece.model.*
 import com.app.mobile_ecommerece.model.Request.CreateOrderRequest
 import com.app.mobile_ecommerece.model.Request.ProductEnableRequest
+import com.app.mobile_ecommerece.model.Request.ProductUpdateRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import javax.inject.Inject
@@ -24,6 +25,9 @@ class ProductRemoteService @Inject constructor(private val productApi: ProductAp
 
     suspend fun enableProduct(enableRequest: ProductEnableRequest, id: String): NetWorkResult<SimpleRespone> =
         handleApi { productApi.enableProduct(enableRequest, id) }
+
+    suspend fun updateProduct(updateRequest: ProductUpdateRequest, id: String): NetWorkResult<SimpleRespone> =
+        handleApi { productApi.updateProduct(updateRequest, id) }
 
     suspend fun createProduct(
         images: List<MultipartBody.Part>,

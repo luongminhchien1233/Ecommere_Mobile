@@ -88,7 +88,8 @@ class FragmentAdminProduct: BaseFragment<FragmentProductAdminBinding>(true) {
     }
 
     private val onItemClick: (ProductAdminModel) -> Unit = {
-
+        val action: NavDirections = FragmentAdminProductDirections.actionAdminProductFragmentToAdminEditProductFragment(it)
+        navigateAction(action)
     }
 
     private val onEnable: (ProductAdminModel) -> Unit = {
