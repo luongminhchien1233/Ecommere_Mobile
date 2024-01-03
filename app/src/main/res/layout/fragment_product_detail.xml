@@ -234,6 +234,20 @@
                         app:layout_constraintTop_toBottomOf="@+id/LayoutHeader">
 
                         <TextView
+                            android:id="@+id/tvSpecs"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@{`Dimensions: ` + productData.specs[0].v + `\n` + `Collection: ` + productData.specs[1].v + `\n` + `Materials: ` + productData.specs[2].v }"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
+
+                        <TextView
                             android:id="@+id/tvTitleDescription"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
