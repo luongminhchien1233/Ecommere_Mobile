@@ -86,35 +86,20 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <EditText
-                        android:id="@+id/etSearchHome"
+                    <SearchView
+                        android:id="@+id/searchView"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_marginEnd="40dp"
                         android:layout_marginRight="40dp"
-                        android:background="@drawable/custom_search"
-                        android:ems="10"
-                        android:hint="Search..."
-                        android:inputType="textPersonName"
-                        android:paddingLeft="64dp"
-                        android:paddingTop="17dp"
-                        android:paddingBottom="13dp"
-                        android:textColor="@color/black"
-                        android:textColorHint="#AAAAAA"
+                        android:background="@drawable/background_edittext"
+                        android:iconifiedByDefault="false"
+                        android:queryHint="Search Here ..."
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageButton
-                        android:id="@+id/btnSearchHome"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/icon_search"
-                        android:scaleType="fitXY"
-                        app:layout_constraintStart_toStartOf="@+id/etSearchHome"
-                        app:layout_constraintTop_toTopOf="@+id/etSearchHome" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

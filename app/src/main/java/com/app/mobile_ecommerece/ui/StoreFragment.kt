@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -13,18 +14,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.mobile_ecommerece.base.BaseFragment
 import com.app.mobile_ecommerece.databinding.FragmentStoreBinding
 import com.app.mobile_ecommerece.model.CategoryModel
+import com.app.mobile_ecommerece.model.OrderData
 import com.app.mobile_ecommerece.model.ProductModel
 import com.app.mobile_ecommerece.model.RoomModel
 import com.app.mobile_ecommerece.ui.adapter.CategoryAdapter
 import com.app.mobile_ecommerece.ui.adapter.ProductAdapter
 import com.app.mobile_ecommerece.viewmodels.StoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class StoreFragment : BaseFragment<FragmentStoreBinding>(false) {
     private val storeViewModel: StoreViewModel by activityViewModels()
     private val categoryAdapter: CategoryAdapter by lazy{
         CategoryAdapter(requireContext(), onCateIconClick)
+    }
+
+    private val productAdapter: ProductAdapter by lazy{
+        ProductAdapter(requireContext(), onProductItemClick)
     }
     private val args by navArgs<StoreFragmentArgs>()
 
@@ -39,7 +46,7 @@ class StoreFragment : BaseFragment<FragmentStoreBinding>(false) {
         binding.rvCategoryStore.adapter = categoryAdapter
         binding.rvCategoryStore.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-        binding.rvListItem.adapter = ProductAdapter(requireContext(), onProductItemClick)
+        binding.rvListItem.adapter = productAdapter
         binding.rvListItem.layoutManager = GridLayoutManager(context, 2)
     }
 
@@ -65,7 +72,7 @@ class StoreFragment : BaseFragment<FragmentStoreBinding>(false) {
         setupRecycleViewLayout()
         storeViewModel.getALlProduct()
         storeViewModel.getALlCategories()
-        if(args.roomId == null){
+        if(args.roomId!!.isEmpty()){
 
         }
         else{
@@ -73,6 +80,17 @@ class StoreFragment : BaseFragment<FragmentStoreBinding>(false) {
             storeViewModel.getProductByRoom(roomId)
             storeViewModel.getCategoryByRoom(roomId)
         }
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                filterList(newText.lowercase(Locale.ROOT))
+                return false
+            }
+        })
         val controller = findNavController()
     }
 
@@ -83,5 +101,18 @@ class StoreFragment : BaseFragment<FragmentStoreBinding>(false) {
 
     private val onCateIconClick: (CategoryModel) -> Unit = {
         storeViewModel.getProductByCategory(it._id)
+    }
+    private fun filterList(newText: String) {
+        val neworderList: ArrayList<ProductModel> = ArrayList()
+        storeViewModel.productsData.value!!.forEach { item ->
+            if (item.name.lowercase(Locale.ROOT).contains(newText)) {
+                neworderList.add(item)
+            }
+        }
+        if (neworderList.isEmpty()) {
+
+        } else {
+            productAdapter.setFilterList(neworderList)
+        }
     }
 }

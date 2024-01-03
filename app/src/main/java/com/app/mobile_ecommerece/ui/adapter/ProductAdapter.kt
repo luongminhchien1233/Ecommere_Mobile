@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.mobile_ecommerece.common.BindableAdapter
 import com.app.mobile_ecommerece.databinding.ItemProductBinding
+import com.app.mobile_ecommerece.model.OrderData
 import com.app.mobile_ecommerece.model.ProductModel
 import com.squareup.picasso.Picasso
 
@@ -44,6 +45,11 @@ class ProductAdapter(
     override fun setItems(items: List<ProductModel>) {
         productList = items
         Log.d("SetItem pd adapter ", "")
+        notifyDataSetChanged()
+    }
+
+    fun setFilterList(items: List<ProductModel>){
+        this.productList = items as ArrayList<ProductModel>
         notifyDataSetChanged()
     }
 
